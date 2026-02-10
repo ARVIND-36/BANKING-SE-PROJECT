@@ -33,7 +33,7 @@ const VerifyOTP = () => {
       localStorage.setItem("nidhi_user", JSON.stringify(user));
       
       toast.success("Email verified successfully!");
-      navigate("/dashboard");
+      navigate("/home");
     } catch (err) {
       toast.error(err.response?.data?.message || "Verification failed");
     } finally {
