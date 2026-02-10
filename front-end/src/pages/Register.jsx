@@ -84,7 +84,16 @@ const Register = () => {
     <div className="auth-container">
       <div className="auth-card auth-card-wide">
         <div className="auth-header">
-          <h1 className="auth-logo">💰 NIDHI</h1>
+          <img 
+            src="/assets/nidhi-logo.png" 
+            alt="NIDHI Logo" 
+            className="auth-logo-img"
+            onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'block';
+            }}
+          />
+          <h1 className="auth-logo" style={{ display: 'none' }}>💰 NIDHI</h1>
           <p className="auth-subtitle">Create your account</p>
         </div>
 

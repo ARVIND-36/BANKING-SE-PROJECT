@@ -44,7 +44,18 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
-        <h1 className="auth-logo">💰 NIDHI</h1>
+        <div className="dashboard-logo-container">
+          <img 
+            src="/assets/nidhi-logo.png" 
+            alt="NIDHI Logo" 
+            className="dashboard-logo-img"
+            onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'inline-block';
+            }}
+          />
+          <h1 className="auth-logo" style={{ display: 'none' }}>💰 NIDHI</h1>
+        </div>
         <button onClick={handleLogout} className="btn-logout">
           Logout
         </button>
