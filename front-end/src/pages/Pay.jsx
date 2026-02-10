@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import api from "../services/api";
 import toast from "react-hot-toast";
@@ -9,34 +9,46 @@ const Pay = () => {
   const prefill = location.state?.prefill || "";
   const prefillName = location.state?.name || "";
 
-  const [receiverUpiId, setReceiverUpiId] = useState(prefill);
+  const [receiverInput, setReceiverInput] = useState(prefill);
   const [amount, setAmount] = useState("");
   const [description, setDescription] = useState("");
   const [receiverName, setReceiverName] = useState(prefillName);
+  const [receiverUpiId, setReceiverUpiId] = useState(prefill);
   const [isSending, setIsSending] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
+  const searchTimeout = useRef(null);
 
-  const searchUser = async (upiIdOrPhone) => {
-    if (!upiIdOrPhone || upiIdOrPhone.length < 3) {
+  const searchUser = (input) => {
+    if (searchTimeout.current) clearTimeout(searchTimeout.current);
+    if (!input || input.length < 3) {
       setReceiverName("");
+      setReceiverUpiId("");
       return;
     }
     setIsSearching(true);
-    try {
-      const res = await api.get(`/wallet/search?upiId=${upiIdOrPhone}`);
-      setReceiverName(res.data.data.name);
-    } catch {
-      setReceiverName("");
-    } finally {
-      setIsSearching(false);
-    }
+    searchTimeout.current = setTimeout(async () => {
+      try {
+        const res = await api.get(`/wallet/search?upiId=${input.trim()}`);
+        setReceiverName(res.data.data.name);
+        setReceiverUpiId(res.data.data.upiId);
+      } catch {
+        setReceiverName("");
+        setReceiverUpiId("");
+      } finally {
+        setIsSearching(false);
+      }
+    }, 400);
   };
 
   const handleSend = async (e) => {
     e.preventDefault();
 
-    if (!receiverUpiId.trim()) {
+    if (!receiverInput.trim()) {
       toast.error("Enter a UPI ID or phone number");
+      return;
+    }
+    if (!receiverName) {
+      toast.error("User not found. Check UPI ID or phone number.");
       return;
     }
     if (!amount || parseFloat(amount) <= 0) {
@@ -47,7 +59,7 @@ const Pay = () => {
     setIsSending(true);
     try {
       const res = await api.post("/wallet/send", {
-        receiverUpiId: receiverUpiId.trim(),
+        receiverUpiId: receiverInput.trim(),
         amount: parseFloat(amount),
         description: description.trim(),
       });
@@ -63,35 +75,41 @@ const Pay = () => {
   return (
     <div className="pay-container">
       <div className="pay-header">
-        <button className="back-btn" onClick={() => navigate(-1)}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <button className="back-btn" onClick={() => navigate("/home")}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <line x1="19" y1="12" x2="5" y2="12" />
             <polyline points="12 19 5 12 12 5" />
           </svg>
         </button>
-        <h2>Pay</h2>
+        <h2>Send Money</h2>
       </div>
 
       <form onSubmit={handleSend} className="pay-form">
         {/* Receiver Input */}
         <div className="pay-field">
-          <label>To</label>
+          <label>Pay to</label>
           <input
             type="text"
-            placeholder="UPI ID or phone number"
-            value={receiverUpiId}
+            placeholder="Enter UPI ID or 10-digit phone number"
+            value={receiverInput}
             onChange={(e) => {
-              setReceiverUpiId(e.target.value);
+              setReceiverInput(e.target.value);
               searchUser(e.target.value);
             }}
             autoFocus
           />
-          {isSearching && <span className="pay-searching">Searching...</span>}
+          {isSearching && <span className="pay-searching">🔍 Searching...</span>}
           {receiverName && (
             <div className="pay-receiver-found">
               <span className="receiver-check">✓</span>
               <span>{receiverName}</span>
+              {receiverUpiId !== receiverInput && (
+                <span className="receiver-upi-hint">({receiverUpiId})</span>
+              )}
             </div>
+          )}
+          {!isSearching && !receiverName && receiverInput.length >= 3 && (
+            <span className="pay-not-found">User not found</span>
           )}
         </div>
 
@@ -126,7 +144,13 @@ const Pay = () => {
           className="pay-submit-btn"
           disabled={isSending || !receiverName}
         >
-          {isSending ? "Sending..." : `Pay${amount ? ` ₹${amount}` : ""}`}
+          {isSending ? (
+            <span className="pay-btn-loading">
+              <span className="spinner-sm" /> Sending...
+            </span>
+          ) : (
+            `Pay${amount ? ` ₹${parseFloat(amount).toLocaleString("en-IN")}` : ""}`
+          )}
         </button>
       </form>
     </div>

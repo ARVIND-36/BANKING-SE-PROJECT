@@ -2,6 +2,7 @@ import { eq, or, desc, sql, inArray } from "drizzle-orm";
 import db from "../config/db.js";
 import { users, transactions } from "../models/schema.js";
 import logger from "../utils/logger.js";
+import { sendTransactionEmail } from "../utils/emailService.js";
 
 // Generate unique transaction ID
 const generateTransactionId = () => {
@@ -84,11 +85,12 @@ export const sendMoney = async (req, res) => {
       });
     }
 
-    // Get receiver details by UPI ID
+    // Get receiver details by UPI ID or phone number
+    const isPhone = /^[6-9][0-9]{9}$/.test(receiverUpiId);
     const receiverResult = await db
       .select()
       .from(users)
-      .where(eq(users.upiId, receiverUpiId));
+      .where(isPhone ? eq(users.mobile, receiverUpiId) : eq(users.upiId, receiverUpiId));
 
     if (receiverResult.length === 0) {
       return res.status(404).json({ success: false, message: "Receiver UPI ID not found" });
@@ -134,6 +136,35 @@ export const sendMoney = async (req, res) => {
       `Transaction ${transactionId}: ${sender.name} sent ₹${amountNum} to ${receiver.name} (${receiverUpiId})`
     );
 
+    // Send email notifications (non-blocking)
+    const senderNewBalance = (senderBalance - amountNum).toFixed(2);
+    const receiverNewBalance = (receiverBalance + amountNum).toFixed(2);
+
+    await Promise.allSettled([
+      sendTransactionEmail({
+        to: sender.email,
+        name: sender.name,
+        type: "debited",
+        amount: amountNum,
+        counterpartyName: receiver.name,
+        transactionId,
+        description: description || `Payment to ${receiver.name}`,
+        timestamp: now,
+        balanceAfter: senderNewBalance,
+      }),
+      sendTransactionEmail({
+        to: receiver.email,
+        name: receiver.name,
+        type: "credited",
+        amount: amountNum,
+        counterpartyName: sender.name,
+        transactionId,
+        description: description || `Payment from ${sender.name}`,
+        timestamp: now,
+        balanceAfter: receiverNewBalance,
+      }),
+    ]);
+
     return res.status(200).json({
       success: true,
       message: "Money sent successfully",
@@ -144,7 +175,7 @@ export const sendMoney = async (req, res) => {
           name: receiver.name,
           upiId: receiver.upiId,
         },
-        newBalance: (senderBalance - amountNum).toFixed(2),
+        newBalance: senderNewBalance,
         timestamp: now,
       },
     });
@@ -242,25 +273,33 @@ export const getTransactionHistory = async (req, res) => {
   }
 };
 
-// ─── SEARCH USER BY UPI ID ───────────────────────────────────
+// ─── SEARCH USER BY UPI ID OR PHONE ──────────────────────────
 export const searchUserByUpiId = async (req, res) => {
   try {
     const { upiId } = req.query;
 
     if (!upiId) {
-      return res.status(400).json({ success: false, message: "UPI ID is required" });
+      return res.status(400).json({ success: false, message: "UPI ID or phone number is required" });
     }
 
-    const result = await db
-      .select({
-        name: users.name,
-        upiId: users.upiId,
-      })
-      .from(users)
-      .where(eq(users.upiId, upiId));
+    // Check if input looks like a phone number (10 digits)
+    const isPhone = /^[6-9][0-9]{9}$/.test(upiId);
+
+    let result;
+    if (isPhone) {
+      result = await db
+        .select({ name: users.name, upiId: users.upiId })
+        .from(users)
+        .where(eq(users.mobile, upiId));
+    } else {
+      result = await db
+        .select({ name: users.name, upiId: users.upiId })
+        .from(users)
+        .where(eq(users.upiId, upiId));
+    }
 
     if (result.length === 0) {
-      return res.status(404).json({ success: false, message: "UPI ID not found" });
+      return res.status(404).json({ success: false, message: isPhone ? "Phone number not found" : "UPI ID not found" });
     }
 
     return res.status(200).json({

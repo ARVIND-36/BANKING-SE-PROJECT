@@ -6,6 +6,7 @@ import logger from "./src/utils/logger.js";
 import authRoutes from "./src/routes/auth.routes.js";
 import walletRoutes from "./src/routes/wallet.routes.js";
 import migrationRoutes from "./src/routes/migration.routes.js";
+import loanRoutes from "./src/routes/loan.routes.js";
 import db from "./src/config/db.js";
 
 dotenv.config();
@@ -38,6 +39,7 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/wallet", walletRoutes);
 app.use("/api/migration", migrationRoutes);
+app.use("/api/loans", loanRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {

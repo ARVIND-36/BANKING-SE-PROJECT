@@ -1,14 +1,18 @@
-import { Outlet, NavLink, useNavigate } from "react-router-dom";
+import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const AppLayout = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
+
+  // Hide bottom nav on Pay page (full-screen experience)
+  const hideBottomNav = ["/scan"].includes(location.pathname);
 
   return (
     <div className="app-layout">
@@ -49,23 +53,25 @@ const AppLayout = () => {
         <Outlet />
       </main>
 
-      {/* Bottom Navigation */}
-      <nav className="bottom-nav">
-        <NavLink to="/home" className={({ isActive }) => `bottom-nav-item ${isActive ? "active" : ""}`}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-            <polyline points="9 22 9 12 15 12 15 22" />
-          </svg>
-          <span>Home</span>
-        </NavLink>
-        <NavLink to="/loans" className={({ isActive }) => `bottom-nav-item ${isActive ? "active" : ""}`}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="2" y="5" width="20" height="14" rx="2" />
-            <line x1="2" y1="10" x2="22" y2="10" />
-          </svg>
-          <span>Loans</span>
-        </NavLink>
-      </nav>
+      {/* Bottom Navigation – 2 tabs */}
+      {!hideBottomNav && (
+        <nav className="bottom-nav">
+          <NavLink to="/home" className={({ isActive }) => `bottom-nav-item ${isActive ? "active" : ""}`}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23" />
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            </svg>
+            <span>Pay</span>
+          </NavLink>
+          <NavLink to="/loans" className={({ isActive }) => `bottom-nav-item ${isActive ? "active" : ""}`}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="5" width="20" height="14" rx="2" />
+              <line x1="2" y1="10" x2="22" y2="10" />
+            </svg>
+            <span>Loans</span>
+          </NavLink>
+        </nav>
+      )}
     </div>
   );
 };

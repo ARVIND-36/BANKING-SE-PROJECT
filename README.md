@@ -1,280 +1,213 @@
 # NIDHI - UPI Transaction & Loan Platform 💰
 
-## Overview
-NIDHI is a full-stack financial platform for PAN-based UPI transactions and loan suggestions (like PolicyBazaar). Currently implements a complete authentication system with **email OTP verification**.
+A full-stack fintech platform with user authentication, wallet transactions, and loan eligibility checker.
 
 ---
 
-## 🚀 Features Implemented
+## ✨ Features
 
-### ✅ Authentication System
-- **User Registration** with validation
-  - Name, Email, Mobile, PAN Card, Aadhaar Number, Password
-  - Email OTP verification (10-minute validity)
-  - Automatic OTP email delivery via Gmail SMTP
-- **Login System** with email verification check
-- **Protected Routes** with JWT authentication
-- **Password Hashing** with bcryptjs
-- **OTP Resend** functionality
+### 🔐 Authentication & Security
+- Email OTP-based registration & login (10-min validity)
+- JWT-based protected routes
+- Password hashing (bcryptjs)
+- Email verification required
 
-### ✅ Technology Stack
-| Layer | Technology |
-|-------|-----------|
+### 💸 Wallet & Transactions
+- UPI-based money transfers
+- Transaction history with filters
+- Real-time balance updates
+- **Automatic transaction email alerts** (credit/debit)
+- Recent people & quick actions
+
+### 🏦 Loan Eligibility Checker
+- 6 loan types: Home, Education, Vehicle, Personal, Business, Credit Line
+- Loan-type-specific input fields (dynamic forms)
+- FOIR-based eligibility computation
+- EMI calculation & loan amount estimation
+- 30+ bank offers with interest rates
+- Saved user profiles for auto-fill
+- Past applications history
+
+### 🎨 Modern UI
+- Emerald theme (#10b981) with white background
+- Responsive mobile-first design
+- 2-tab navigation (Home + Services)
+- Toast notifications
+- Back-button prevention after login
+
+---
+
+## 🛠 Tech Stack
+
+| Component | Tech |
+|-----------|------|
 | **Backend** | Node.js, Express.js |
-| **Database** | PostgreSQL (Neon Cloud) with Drizzle ORM |
-| **Authentication** | JWT, bcryptjs |
-| **Email Service** | Nodemailer (Gmail SMTP) |
-| **Logging** | Winston (file + console) |
-| **Frontend** | React 19, Vite, React Router |
-| **API Client** | Axios with interceptors |
+| **Database** | PostgreSQL (Neon) + Drizzle ORM |
+| **Auth** | JWT + bcryptjs |
+| **Email** | Nodemailer (Gmail SMTP) |
+| **Frontend** | React 19 + Vite |
+| **Routing** | React Router v6 |
+| **Styling** | CSS Variables |
 | **Notifications** | React Hot Toast |
+| **HTTP** | Axios with interceptors |
+
+---
+
+## 📦 Setup
+
+### Backend
+```bash
+cd back-end
+npm install
+npm run db:push        # Push schema to Neon
+npm run dev            # Start on :5000
+```
+
+**.env required:**
+```env
+SMTP_EMAIL=your-gmail@gmail.com
+SMTP_PASSWORD=gmail-app-password
+JWT_SECRET=your-secret-key
+NEON_URL=postgresql://...
+```
+
+### Frontend
+```bash
+cd front-end
+npm install
+npm run dev            # Start on :5173
+```
+
+---
+
+## 📡 Key API Endpoints
+
+| Endpoint | Method | Purpose |
+|----------|--------|---------|
+| `/api/auth/register` | POST | Register with email OTP |
+| `/api/auth/verify-otp` | POST | Verify email & get JWT |
+| `/api/auth/login` | POST | Login (verified email only) |
+| `/api/wallet/send` | POST | Transfer money + send emails |
+| `/api/wallet/transactions` | GET | Transaction history |
+| `/api/loans/eligibility` | POST | Check loan eligibility |
+| `/api/loans/fields/:type` | GET | Type-specific form fields |
+| `/api/loans/profile` | GET | Saved user profile |
 
 ---
 
 ## 📁 Project Structure
 
 ```
-BANKING-SE-PROJECT/
-├── back-end/
-│   ├── index.js                          # Express server entry point
-│   ├── .env                              # Environment variables (Gmail SMTP, DB, JWT)
-│   ├── package.json
-│   ├── logs/                             # Winston log files
-│   └── src/
-│       ├── config/
-│       │   ├── db.js                     # Database connection
-│       │   └── drizzle.config.js         # Drizzle ORM config
-│       ├── models/
-│       │   └── schema.js                 # User table schema (with OTP fields)
-│       ├── controllers/
-│       │   └── auth.controller.js        # Auth logic (register, login, verifyOTP, resendOTP)
-│       ├── routes/
-│       │   └── auth.routes.js            # API routes
-│       ├── middleware/
-│       │   └── auth.middleware.js        # JWT middleware
-│       └── utils/
-│           ├── logger.js                 # Winston logger
-│           └── emailService.js           # OTP email sender
-│
-└── front-end/                            # React app
-    └── src/
-        ├── App.jsx                       # Routing setup
-        ├── App.css                       # Global styles
-        ├── services/api.js               # Axios instance
-        ├── context/AuthContext.jsx       # Auth state management
-        ├── components/ProtectedRoute.jsx # Route guard
-        └── pages/
-            ├── Login.jsx                 # Login page
-            ├── Register.jsx              # Registration page
-            ├── VerifyOTP.jsx             # OTP verification page
-            └── Dashboard.jsx             # Protected dashboard
+back-end/src/
+├── controllers/       # auth, wallet, loan logic
+├── routes/           # API route definitions
+├── models/schema.js  # Drizzle table definitions
+├── middleware/       # JWT authentication
+└── utils/
+    ├── emailService.js    # OTP + transaction emails
+    └── logger.js          # Winston logging
+
+front-end/src/
+├── pages/            # Login, Register, Home, Loans, Pay, Transactions
+├── components/       # ProtectedRoute, AppLayout
+├── context/          # AuthContext for global auth state
+├── services/         # API client (axios)
+└── App.jsx          # Route config with PublicRoute wrapper
 ```
 
 ---
 
-## 🔧 Setup Instructions
+## 🚀 Features in Detail
 
-### 1. Backend Setup
+### Transaction Email Alerts
+Every money transfer sends **2 emails**:
+- **Sender**: Debit alert with new balance
+- **Receiver**: Credit alert with new balance
+- Includes: Amount, Transaction ID, Timestamp, Counterparty name
+
+### Loan Type-Specific Forms
+Each loan has unique required fields:
+- **Home**: Property type, value, down payment, first home status, co-applicant
+- **Education**: Course name, institute, country, admission status, collateral
+- **Vehicle**: Vehicle type, brand, on-road price
+- **Personal**: Loan purpose, employer, years in job
+- **Business**: Business type, annual turnover, GST registration
+- **Credit Line**: Purpose, monthly usage
+
+### Auto-Fill From Saved Profile
+- Previous details automatically saved to DB
+- **⚡ "Use Saved Profile"** button to fill all fields in 1 click
+- Loan-specific details stored separately per loan type
+
+### Back-Button Prevention
+- After login, can't go back to /login (browser history replaced)
+- Authenticated users redirected to /home if accessing /login
+
+---
+
+## 🔐 Database Tables
+
+| Table | Purpose |
+|-------|---------|
+| `users` | User accounts (name, email, password hash, wallet balance, UPI ID) |
+| `transactions` | Money transfers (sender, receiver, amount, status, description) |
+| `loanApplications` | Loan applications (type, eligibility, bank offers, specific details) |
+| `userLoanProfiles` | Saved profile data (common fields + per-loan-type details) |
+
+---
+
+## 🧪 Quick Test
+
+1. **Register**: http://localhost:5173/register → Check email for OTP
+2. **Verify**: Enter OTP → Redirect to home
+3. **Send Money**: Pay tab → Enter UPI ID → Send → Both users get emails
+4. **Check Loans**: Loans tab → Choose type → Fill form → See eligibility & bank offers
+
+---
+
+## 📝 Environment Variables
 
 ```bash
-cd back-end
-npm install
-```
-
-**Environment Variables (`.env`):**
-```env
-# Gmail SMTP Configuration
+# Gmail SMTP (use App Password for 2FA-enabled Gmail)
 SMTP_EMAIL=your-gmail@gmail.com
-SMTP_PASSWORD=your-app-password
+SMTP_PASSWORD=xxxx xxxx xxxx xxxx
 
-# JWT Secret
+# JWT
 JWT_SECRET=nidhi_jwt_secret_key_2026_secure
 
-# Neon PostgreSQL URL
-NEON_URL=postgresql://user:pass@host/db?sslmode=require
-```
+# Neon PostgreSQL (free tier)
+NEON_URL=postgresql://neondb_owner:password@host/db?sslmode=require
 
-**Push Database Schema:**
-```bash
-npm run db:push
-```
-
-**Start Backend:**
-```bash
-npm run dev    # Development (nodemon)
-# or
-npm start      # Production
-```
-
-Server runs on: `http://localhost:5000`
-
----
-
-### 2. Frontend Setup
-
-```bash
-cd front-end
-npm install
-```
-
-**Start Frontend:**
-```bash
-npm run dev
-```
-
-App runs on: `http://localhost:5173`
-
----
-
-## 📡 API Endpoints
-
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| `POST` | `/api/auth/register` | Register new user → sends OTP email | ❌ |
-| `POST` | `/api/auth/verify-otp` | Verify email with OTP → returns JWT | ❌ |
-| `POST` | `/api/auth/resend-otp` | Resend OTP email | ❌ |
-| `POST` | `/api/auth/login` | Login (requires verified email) | ❌ |
-| `GET` | `/api/auth/profile` | Get user profile | ✅ JWT |
-| `GET` | `/api/health` | Health check | ❌ |
-
----
-
-## 🧪 Testing the OTP Flow
-
-### Step 1: Register a New User
-1. Go to `http://localhost:5173/register`
-2. Fill in all fields:
-   - Name: `John Doe`
-   - Email: `your-test-email@gmail.com`
-   - Mobile: `9876543210` (must start with 6-9)
-   - PAN Card: `ABCDE1234F` (format: 5 letters + 4 digits + 1 letter)
-   - Aadhaar: `123456789012` (12 digits)
-   - Password: `password123`
-3. Click **Create Account**
-4. ✅ You'll be redirected to the **Verify OTP** page
-
-### Step 2: Check Email for OTP
-- Check the inbox of the email you provided
-- Look for an email from **NIDHI Platform**
-- Subject: "NIDHI - Verify Your Account"
-- Copy the **6-digit OTP** from the email
-
-### Step 3: Verify OTP
-1. On the **Verify OTP** page, enter the 6-digit code
-2. Click **Verify OTP**
-3. ✅ Upon success, you'll be logged in and redirected to the **Dashboard**
-
-### Step 4: Test Login
-1. Logout from the dashboard
-2. Go to `http://localhost:5173/login`
-3. Enter your **email or mobile number** and **password**
-4. Click **Sign In**
-5. ✅ You should be logged into the dashboard (only works if email is verified)
-
-### Step 5: Test Resend OTP
-1. Register another user but don't verify
-2. Wait for the OTP to expire (or just test the resend)
-3. Click **Resend OTP** on the verification page
-4. ✅ A new OTP will be sent to your email
-
----
-
-## 🔒 Security Features
-
-1. **Password Hashing**: bcrypt with salt rounds = 12
-2. **JWT Tokens**: 7-day expiration
-3. **OTP Expiry**: 10 minutes from generation
-4. **Email Verification**: Users cannot login without verifying email
-5. **Input Validation**: All fields validated on backend
-6. **Protected Routes**: JWT middleware guards sensitive endpoints
-
----
-
-## 📝 Database Schema
-
-```sql
-CREATE TABLE users (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(100) NOT NULL,
-  email VARCHAR(150) UNIQUE NOT NULL,
-  mobile VARCHAR(15) UNIQUE NOT NULL,
-  pan_card VARCHAR(10) UNIQUE NOT NULL,
-  aadhaar_number VARCHAR(12) UNIQUE NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  is_verified BOOLEAN DEFAULT FALSE,
-  otp VARCHAR(6),
-  otp_expiry TIMESTAMP,
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
+# Node
+NODE_ENV=development
 ```
 
 ---
 
-## 🐛 Common Issues & Solutions
 
-### Issue 1: OTP Email Not Received
-- **Check spam folder**
-- **Verify SMTP credentials** in `.env`
-- **Enable "Less secure app access"** for Gmail (or use App Password)
-- Check backend logs: `back-end/logs/combined.log`
-
-### Issue 2: CORS Errors
-- Ensure backend is running on `http://localhost:5000`
-- Check `index.js` has `cors` middleware configured for `localhost:5173`
-
-### Issue 3: Database Connection Failed
-- Verify `NEON_URL` in `.env` is correct
-- Check if Neon database is accessible
-- Run `npm run db:push` to ensure schema is synced
-
-### Issue 4: JWT Token Issues
-- Clear browser localStorage and cookies
-- Check if `JWT_SECRET` in `.env` matches backend
 
 ---
 
-## 🎨 UI Features
+## 📊 Key Code Files
 
-- **Beautiful gradient backgrounds**
-- **Responsive design** (mobile-friendly)
-- **Real-time toast notifications**
-- **Loading states** on buttons
-- **OTP input field** with auto-formatting
-- **Protected dashboard** with profile display
-
----
-
-## 🚧 Coming Soon
-
-- 💸 **UPI Transfer** (PAN-based, no bank account)
-- 📋 **Loan Suggestions** (PolicyBazaar-style comparison)
-- 📊 **Transaction History**
-- 📱 **Mobile OTP** (SMS verification)
-- 🔐 **Two-Factor Authentication**
-- 💳 **Virtual Cards**
+- **Email Service**: `back-end/src/utils/emailService.js` → OTP + Transaction emails
+- **Wallet Logic**: `back-end/src/controllers/wallet.controller.js` → Send money + triggers emails
+- **Loan Controller**: `back-end/src/controllers/loan.controller.js` → Eligibility logic
+- **Auth Context**: `front-end/src/context/AuthContext.jsx` → Global auth state
+- **App Routes**: `front-end/src/App.jsx` → PublicRoute + ProtectedRoute wrappers
 
 ---
 
-## 📞 Support
+## ✅ Checklist for Running
 
-For issues or questions, check:
-- Backend logs: `back-end/logs/combined.log`
-- Browser console for frontend errors
-- Network tab for API request/response details
-
----
-
-## 🎉 Success Indicators
-
-✅ Backend running on port 5000  
-✅ Frontend running on port 5173  
-✅ Database schema pushed successfully  
-✅ Email service configured  
-✅ User can register and receive OTP email  
-✅ User can verify OTP and login  
-✅ Protected routes working with JWT  
+- [ ] `.env` file filled with Gmail credentials & DB URL
+- [ ] `npm run db:push` executed (schema synced)
+- [ ] Backend running: `npm run dev` in `back-end/`
+- [ ] Frontend running: `npm run dev` in `front-end/`
+- [ ] Can register & receive OTP email
+- [ ] Can transfer money & both users get transaction emails
+- [ ] Can check loan eligibility & see bank offers
 
 ---
 
-**Built with ❤️ for NIDHI Platform**
+

@@ -1,4 +1,4 @@
-import { pgTable, serial, varchar, timestamp, boolean, decimal, text, integer } from "drizzle-orm/pg-core";
+import { pgTable, serial, varchar, timestamp, boolean, decimal, text, integer, jsonb } from "drizzle-orm/pg-core";
 
 export const users = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -44,4 +44,52 @@ export const transactions = pgTable("transactions", {
   // Timestamps
   createdAt: timestamp("created_at").defaultNow(),
   completedAt: timestamp("completed_at"),
+});
+
+// ─── LOAN APPLICATIONS ──────────────────────────────────────
+export const loanApplications = pgTable("loan_applications", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull(),
+
+  // Loan type: home, education, vehicle, personal, business, credit_line
+  loanType: varchar("loan_type", { length: 30 }).notNull(),
+
+  // User inputs
+  monthlyIncome: decimal("monthly_income", { precision: 15, scale: 2 }).notNull(),
+  employmentType: varchar("employment_type", { length: 30 }).notNull(), // salaried, self_employed, business
+  creditScore: integer("credit_score").notNull(),
+  age: integer("age").notNull(),
+  existingEmi: decimal("existing_emi", { precision: 15, scale: 2 }).default("0.00"),
+  desiredTenure: integer("desired_tenure").notNull(),     // in months
+  desiredAmount: decimal("desired_amount", { precision: 15, scale: 2 }).notNull(),
+  city: varchar("city", { length: 100 }).notNull(),
+
+  // Computed results
+  eligibleAmount: decimal("eligible_amount", { precision: 15, scale: 2 }),
+  isEligible: boolean("is_eligible").default(false),
+  bankOffers: jsonb("bank_offers"),  // JSON array of matched bank offers
+
+  // Loan-type-specific details (dynamic fields per loan category)
+  loanSpecificDetails: jsonb("loan_specific_details"),
+
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+// ─── USER LOAN PROFILES (saved details for auto-fill) ────────
+export const userLoanProfiles = pgTable("user_loan_profiles", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull(),
+
+  // Common fields saved for reuse
+  monthlyIncome: decimal("monthly_income", { precision: 15, scale: 2 }),
+  employmentType: varchar("employment_type", { length: 30 }),
+  creditScore: integer("credit_score"),
+  age: integer("age"),
+  existingEmi: decimal("existing_emi", { precision: 15, scale: 2 }),
+  city: varchar("city", { length: 100 }),
+
+  // Loan-type-specific saved details (JSON per loan type)
+  savedDetails: jsonb("saved_details"), // { home: {...}, education: {...}, ... }
+
+  updatedAt: timestamp("updated_at").defaultNow(),
 });

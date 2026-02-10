@@ -36,3 +36,7 @@ params: 4
 params: 4
 [2026-02-10 16:33:39] error: Get wallet balance error: Failed query: select "wallet_balance", "upi_id", "name" from "users" where "users"."id" = $1
 params: 4
+[2026-02-10 23:56:52] error: Get loan applications error: Failed query: select "id", "user_id", "loan_type", "monthly_income", "employment_type", "credit_score", "age", "existing_emi", "desired_tenure", "desired_amount", "city", "eligible_amount", "is_eligible", "bank_offers", "loan_specific_details", "created_at" from "loan_applications" where "loan_applications"."user_id" = $1 order by "loan_applications"."created_at" desc limit $2
+params: 4,10
+[2026-02-10 23:56:52] error: Get loan applications error: Failed query: select "id", "user_id", "loan_type", "monthly_income", "employment_type", "credit_score", "age", "existing_emi", "desired_tenure", "desired_amount", "city", "eligible_amount", "is_eligible", "bank_offers", "loan_specific_details", "created_at" from "loan_applications" where "loan_applications"."user_id" = $1 order by "loan_applications"."created_at" desc limit $2
+params: 4,10

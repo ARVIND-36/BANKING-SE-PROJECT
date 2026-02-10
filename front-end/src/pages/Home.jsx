@@ -9,12 +9,13 @@ const Home = () => {
   const navigate = useNavigate();
   const [balance, setBalance] = useState(null);
   const [upiId, setUpiId] = useState("");
+  const [recentTransactions, setRecentTransactions] = useState([]);
   const [recentPeople, setRecentPeople] = useState([]);
-  const [payInput, setPayInput] = useState("");
   const [showBalance, setShowBalance] = useState(false);
 
   useEffect(() => {
     fetchWalletData();
+    fetchRecentTransactions();
     fetchRecentPeople();
   }, []);
 
@@ -28,11 +29,19 @@ const Home = () => {
     }
   };
 
+  const fetchRecentTransactions = async () => {
+    try {
+      const res = await api.get("/wallet/transactions?limit=4");
+      setRecentTransactions(res.data.data.transactions || []);
+    } catch (err) {
+      console.error("Failed to fetch transactions");
+    }
+  };
+
   const fetchRecentPeople = async () => {
     try {
       const res = await api.get("/wallet/transactions?limit=20");
       const txns = res.data.data.transactions || [];
-      // Extract unique people from transactions
       const peopleMap = new Map();
       txns.forEach((txn) => {
         const person = txn.otherParty;
@@ -44,60 +53,33 @@ const Home = () => {
           });
         }
       });
-      setRecentPeople(Array.from(peopleMap.values()).slice(0, 8));
+      setRecentPeople(Array.from(peopleMap.values()).slice(0, 6));
     } catch (err) {
       console.error("Failed to fetch recent people");
     }
   };
 
-  const handlePay = () => {
-    const input = payInput.trim();
-    if (!input) {
-      toast.error("Enter a UPI ID or phone number");
-      return;
+  const toggleBalance = async () => {
+    if (!showBalance) {
+      try {
+        const res = await api.get("/wallet/balance");
+        setBalance(parseFloat(res.data.data.balance));
+      } catch (err) { /* use cached */ }
     }
-    navigate("/pay", { state: { prefill: input } });
-  };
-
-  const handleBankTransfer = () => {
-    toast("Bank transfer integration coming soon", {
-      icon: "🏦",
-    });
+    setShowBalance(!showBalance);
   };
 
   const handlePayPerson = (person) => {
     navigate("/pay", { state: { prefill: person.upiId, name: person.name } });
   };
 
-  const toggleBalance = async () => {
-    if (!showBalance) {
-      // Refresh balance when showing
-      try {
-        const res = await api.get("/wallet/balance");
-        setBalance(parseFloat(res.data.data.balance));
-      } catch (err) {
-        // use cached
-      }
-    }
-    setShowBalance(!showBalance);
-  };
-
   const getInitials = (name) => {
     if (!name) return "?";
-    return name
-      .split(" ")
-      .map((w) => w[0])
-      .join("")
-      .toUpperCase()
-      .slice(0, 2);
+    return name.split(" ").map((w) => w[0]).join("").toUpperCase().slice(0, 2);
   };
 
   const getAvatarColor = (name) => {
-    const colors = [
-      "#667eea", "#764ba2", "#f093fb", "#4facfe",
-      "#43e97b", "#fa709a", "#fee140", "#30cfd0",
-      "#a18cd1", "#fbc2eb", "#ff9a9e", "#fad0c4",
-    ];
+    const colors = ["#10b981", "#14b8a6", "#06b6d4", "#8b5cf6", "#f59e0b", "#ef4444", "#ec4899", "#6366f1"];
     let hash = 0;
     for (let i = 0; i < (name || "").length; i++) {
       hash = name.charCodeAt(i) + ((hash << 5) - hash);
@@ -105,140 +87,127 @@ const Home = () => {
     return colors[Math.abs(hash) % colors.length];
   };
 
+  const formatDate = (timestamp) => {
+    const date = new Date(timestamp);
+    const now = new Date();
+    const diffMs = now - date;
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+    if (diffDays === 0) return "Today";
+    if (diffDays === 1) return "Yesterday";
+    return date.toLocaleDateString("en-IN", { day: "numeric", month: "short" });
+  };
+
+  const formatTime = (timestamp) => {
+    const date = new Date(timestamp);
+    return date.toLocaleTimeString("en-IN", { hour: "numeric", minute: "2-digit", hour12: true });
+  };
+
   return (
     <div className="home-container">
-      {/* Greeting */}
-      <div className="home-greeting">
-        <h2>Hi, {user?.name?.split(" ")[0] || "there"} 👋</h2>
-        <p className="home-upi-id">{upiId}</p>
-      </div>
-
-      {/* Scan & Pay Section */}
-      <div className="home-actions-card">
-        <button className="scan-btn" onClick={() => navigate("/scan")}>
-          <div className="scan-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M3 7V5a2 2 0 0 1 2-2h2" />
-              <path d="M17 3h2a2 2 0 0 1 2 2v2" />
-              <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
-              <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
-              <line x1="7" y1="12" x2="17" y2="12" />
-              <line x1="12" y1="7" x2="12" y2="17" />
-            </svg>
+      {/* Balance Card */}
+      <div className="home-balance-card" onClick={toggleBalance}>
+        <div className="hb-top">
+          <span className="hb-greeting">Hello, {user?.name?.split(" ")[0] || "there"}</span>
+          <span className="hb-upi">{upiId}</span>
+        </div>
+        <div className="hb-bottom">
+          <div className="hb-amount-wrap">
+            <span className="hb-label">Wallet Balance</span>
+            <span className="hb-amount">
+              {showBalance
+                ? `₹${balance !== null ? balance.toLocaleString("en-IN", { minimumFractionDigits: 2 }) : "0.00"}`
+                : "₹ ••••••"}
+            </span>
           </div>
-          <span>Tap to Scan &amp; Pay</span>
-        </button>
-
-        <div className="pay-input-row">
-          <div className="pay-input-wrapper">
-            <span className="pay-input-icon">🔍</span>
-            <input
-              type="text"
-              className="pay-input"
-              placeholder="Pay by UPI ID or phone number"
-              value={payInput}
-              onChange={(e) => setPayInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handlePay()}
-            />
-          </div>
-          <button className="pay-go-btn" onClick={handlePay}>
-            Pay
+          <button className="hb-eye-btn" onClick={(e) => { e.stopPropagation(); toggleBalance(); }}>
+            {showBalance ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" /><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" /><line x1="1" y1="1" x2="23" y2="23" /></svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+            )}
           </button>
         </div>
       </div>
 
-      {/* Quick Actions */}
+      {/* Quick Actions Row */}
       <div className="home-quick-actions">
         <button className="quick-action-btn" onClick={() => navigate("/pay")}>
-          <span className="qa-icon">💸</span>
+          <div className="qa-icon-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="12" y1="5" x2="12" y2="19" /><polyline points="19 12 12 19 5 12" /></svg>
+          </div>
           <span className="qa-label">Send</span>
         </button>
-        <button className="quick-action-btn" onClick={handleBankTransfer}>
-          <span className="qa-icon">🏦</span>
-          <span className="qa-label">Bank Transfer</span>
+        <button className="quick-action-btn" onClick={() => navigate("/scan")}>
+          <div className="qa-icon-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M3 7V5a2 2 0 0 1 2-2h2" /><path d="M17 3h2a2 2 0 0 1 2 2v2" /><path d="M21 17v2a2 2 0 0 1-2 2h-2" /><path d="M7 21H5a2 2 0 0 1-2-2v-2" /></svg>
+          </div>
+          <span className="qa-label">Scan</span>
         </button>
-        <button className="quick-action-btn" onClick={toggleBalance}>
-          <span className="qa-icon">💰</span>
-          <span className="qa-label">Balance</span>
+        <button className="quick-action-btn" onClick={() => toast("Bank transfer coming soon", { icon: "🏦" })}>
+          <div className="qa-icon-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18" /><path d="M9 21V9" /></svg>
+          </div>
+          <span className="qa-label">Bank</span>
         </button>
         <button className="quick-action-btn" onClick={() => navigate("/transactions")}>
-          <span className="qa-icon">📜</span>
+          <div className="qa-icon-circle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>
+          </div>
           <span className="qa-label">History</span>
         </button>
       </div>
 
-      {/* Balance Card (toggle) */}
-      {showBalance && (
-        <div className="home-balance-card" onClick={toggleBalance}>
-          <div className="hb-left">
-            <span className="hb-label">NIDHI Wallet Balance</span>
-            <span className="hb-amount">
-              ₹{balance !== null ? balance.toLocaleString("en-IN", { minimumFractionDigits: 2 }) : "---"}
-            </span>
-          </div>
-          <span className="hb-hide">Tap to hide</span>
-        </div>
-      )}
-
       {/* Recent People */}
-      <div className="home-section">
-        <div className="home-section-header">
-          <h3>People</h3>
-          {recentPeople.length > 0 && (
-            <button className="see-all-btn" onClick={() => navigate("/transactions")}>
-              See all
-            </button>
-          )}
-        </div>
-
-        {recentPeople.length === 0 ? (
-          <div className="home-empty-state">
-            <span className="empty-icon">👥</span>
-            <p>Your recent transactions will appear here</p>
-            <button className="btn-primary-sm" onClick={() => navigate("/pay")}>
-              Send your first payment
-            </button>
+      {recentPeople.length > 0 && (
+        <div className="home-section">
+          <div className="home-section-header">
+            <h3>Recent People</h3>
+            <button className="see-all-btn" onClick={() => navigate("/transactions")}>See all</button>
           </div>
-        ) : (
           <div className="people-grid">
             {recentPeople.map((person) => (
-              <button
-                key={person.upiId}
-                className="person-chip"
-                onClick={() => handlePayPerson(person)}
-              >
-                <div
-                  className="person-avatar"
-                  style={{ background: getAvatarColor(person.name) }}
-                >
+              <button key={person.upiId} className="person-chip" onClick={() => handlePayPerson(person)}>
+                <div className="person-avatar" style={{ background: getAvatarColor(person.name) }}>
                   {getInitials(person.name)}
                 </div>
-                <span className="person-name">
-                  {person.name?.split(" ")[0] || "User"}
-                </span>
+                <span className="person-name">{person.name?.split(" ")[0] || "User"}</span>
               </button>
             ))}
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
-      {/* Promotional Cards */}
-      <div className="home-promo-section">
-        <div className="promo-card promo-wallet" onClick={handleBankTransfer}>
-          <div className="promo-text">
-            <h4>My Wallet</h4>
-            <p>Add money, send &amp; manage your NIDHI wallet</p>
+      {/* Transaction History */}
+      {recentTransactions.length > 0 && (
+        <div className="home-section">
+          <div className="home-section-header">
+            <h3>Transactions</h3>
+            <button className="see-all-btn" onClick={() => navigate("/transactions")}>See all</button>
           </div>
-          <span className="promo-arrow">→</span>
-        </div>
-        <div className="promo-card promo-bank" onClick={handleBankTransfer}>
-          <div className="promo-text">
-            <h4>Bank Accounts</h4>
-            <p>Link your bank accounts for easy transfers</p>
+          <div className="transaction-list">
+            {recentTransactions.map((txn) => (
+              <div key={txn.id} className="transaction-item">
+                <div className="txn-left">
+                  <div className="txn-avatar" style={{ background: getAvatarColor(txn.otherParty.name) }}>
+                    {getInitials(txn.otherParty.name)}
+                  </div>
+                  <div className="txn-details">
+                    <p className="txn-name">{txn.otherParty.name}</p>
+                    <p className="txn-time">{formatDate(txn.timestamp)} • {formatTime(txn.timestamp)}</p>
+                  </div>
+                </div>
+                <div className="txn-right">
+                  <p className={`txn-amount ${txn.type === "sent" ? "sent" : "received"}`}>
+                    {txn.type === "sent" ? "-" : "+"}₹{txn.amount.toLocaleString("en-IN")}
+                  </p>
+                  <p className="txn-status">{txn.status}</p>
+                </div>
+              </div>
+            ))}
           </div>
-          <span className="promo-arrow">→</span>
         </div>
-      </div>
+      )}
     </div>
   );
 };

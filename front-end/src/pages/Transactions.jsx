@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
 const Transactions = () => {
-  const navigate = useNavigate();
   const [transactions, setTransactions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [filter, setFilter] = useState("all"); // all, sent, received
+  const [filter, setFilter] = useState("all");
 
   useEffect(() => {
     fetchTransactions();
@@ -58,7 +56,7 @@ const Transactions = () => {
 
   if (isLoading) {
     return (
-      <div className="loading-container">
+      <div className="loading-container" style={{ minHeight: "60vh" }}>
         <div className="spinner" />
         <p>Loading transactions...</p>
       </div>
@@ -67,13 +65,7 @@ const Transactions = () => {
 
   return (
     <div className="txn-page-container">
-      <div className="txn-page-header">
-        <button className="back-btn" onClick={() => navigate(-1)}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-        </button>
+      <div className="txn-page-title">
         <h2>Transaction History</h2>
       </div>
 
@@ -117,6 +109,14 @@ const Transactions = () => {
                       {txn.description && (
                         <span className="txn-row-desc">{txn.description}</span>
                       )}
+                    </div>
+                    <div className="txn-row-right">
+                      <span className={`txn-row-amount ${txn.type}`}>
+                        {txn.type === "sent" ? "−" : "+"}₹
+                        {parseFloat(txn.amount).toLocaleString("en-IN", {
+                          minimumFractionDigits: 2,
+                        })}
+                      </span>
                       <span className="txn-row-time">
                         {new Date(txn.timestamp).toLocaleTimeString("en-IN", {
                           hour: "2-digit",
@@ -124,12 +124,6 @@ const Transactions = () => {
                         })}
                       </span>
                     </div>
-                    <span className={`txn-row-amount ${txn.type}`}>
-                      {txn.type === "sent" ? "−" : "+"}₹
-                      {parseFloat(txn.amount).toLocaleString("en-IN", {
-                        minimumFractionDigits: 2,
-                      })}
-                    </span>
                   </div>
                 ))}
               </div>
