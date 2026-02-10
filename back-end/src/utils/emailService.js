@@ -11,6 +11,10 @@ const transporter = nodemailer.createTransport({
     user: process.env.SMTP_EMAIL,
     pass: process.env.SMTP_PASSWORD,
   },
+  // Add timeout settings
+  connectionTimeout: 5000, // 5 seconds
+  greetingTimeout: 5000,
+  socketTimeout: 10000, // 10 seconds
 });
 
 // Generate 6-digit OTP
@@ -70,7 +74,15 @@ export const sendOTPEmail = async (email, otp, name) => {
   };
 
   try {
-    const info = await transporter.sendMail(mailOptions);
+    // Add timeout wrapper
+    const sendWithTimeout = Promise.race([
+      transporter.sendMail(mailOptions),
+      new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Email timeout')), 15000) // 15 second timeout
+      )
+    ]);
+    
+    const info = await sendWithTimeout;
     logger.info(`OTP email sent to ${email} - Message ID: ${info.messageId}`);
     return true;
   } catch (error) {

@@ -1,78 +1,193 @@
-[2026-02-10 15:09:48] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:09:48] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:09:50] info: ::1 - - [10/Feb/2026:09:39:50 +0000] "GET /api/health HTTP/1.1" 200 72 "-" "curl/8.5.0"
-[2026-02-10 15:14:14] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:14:14] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:15:17] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:15:17] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:15:38] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:15:38] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:19:59] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:19:59] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:20:29] info: ::1 - - [10/Feb/2026:09:50:29 +0000] "GET / HTTP/1.1" 404 45 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:20:29] info: ::1 - - [10/Feb/2026:09:50:29 +0000] "GET /favicon.ico HTTP/1.1" 404 45 "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:20:32] info: ::1 - - [10/Feb/2026:09:50:32 +0000] "GET / HTTP/1.1" 404 45 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:21:40] info: ::ffff:127.0.0.1 - - [10/Feb/2026:09:51:40 +0000] "GET /api/health HTTP/1.1" 200 72 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:23:45] info: New user registered: kbhuvana2005@gmail.com (BHUVANA K )
-[2026-02-10 15:23:45] info: ::ffff:127.0.0.1 - - [10/Feb/2026:09:53:45 +0000] "POST /api/auth/register HTTP/1.1" 201 367 "http://localhost:5173/register" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:23:45] info: ::ffff:127.0.0.1 - - [10/Feb/2026:09:53:45 +0000] "GET /api/auth/profile HTTP/1.1" 200 200 "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:23:45] info: ::ffff:127.0.0.1 - - [10/Feb/2026:09:53:45 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:26:21] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:26:21] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:26:36] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:26:36] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:26:54] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:26:54] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:26:56] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:26:56] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:27:04] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:27:04] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:27:07] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:27:07] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:27:12] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:27:12] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:27:50] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:27:50] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:28:00] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:28:00] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:28:15] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:28:15] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:28:29] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:28:29] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:30:19] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:30:20] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:31:21] info: OTP email sent to kbhuvana2005@gmail.com - Message ID: <557a4756-61ec-1adb-74a5-2c7823ea25c5@gmail.com>
-[2026-02-10 15:31:21] info: New user registered: kbhuvana2005@gmail.com (BHUVANA K ) - OTP sent
-[2026-02-10 15:31:21] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:01:21 +0000] "POST /api/auth/register HTTP/1.1" 201 172 "http://localhost:5174/register" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:31:36] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:31:36] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:31:36] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:31:36] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:31:36] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:31:36] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:31:36] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:31:36] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:32:28] info: User verified successfully: kbhuvana2005@gmail.com
-[2026-02-10 15:32:28] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:02:28 +0000] "POST /api/auth/verify-otp HTTP/1.1" 200 372 "http://localhost:5174/verify-otp" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:32:52] info: User logged in: kbhuvana2005@gmail.com
-[2026-02-10 15:32:52] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:02:52 +0000] "POST /api/auth/login HTTP/1.1" 200 378 "http://localhost:5174/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:32:52] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:02:52 +0000] "GET /api/auth/profile HTTP/1.1" 200 218 "http://localhost:5174/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:32:52] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:02:52 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5174/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:33:18] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:33:18] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:33:18] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:33:18] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:33:28] info: OTP email sent to pnarvind05@gmail.com - Message ID: <06d875e3-a345-c4d9-30cb-e244b7f745c5@gmail.com>
-[2026-02-10 15:37:27] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:37:27] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:37:27] info: Database connection established with Neon PostgreSQL
-[2026-02-10 15:37:27] info: 🚀 NIDHI server running on http://localhost:5000
-[2026-02-10 15:39:44] info: OTP email sent to atchayaarun35@gmail.com - Message ID: <3e27393f-0070-b150-0fa6-166b228b96c4@gmail.com>
-[2026-02-10 15:39:44] info: New user registered: atchayaarun35@gmail.com (ATCHAYA ARUN ) - OTP sent
-[2026-02-10 15:39:44] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:09:44 +0000] "POST /api/auth/register HTTP/1.1" 201 176 "http://localhost:5174/register" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:40:16] info: User verified successfully: atchayaarun35@gmail.com
-[2026-02-10 15:40:16] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:10:16 +0000] "POST /api/auth/verify-otp HTTP/1.1" 200 378 "http://localhost:5174/verify-otp" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:40:55] info: User logged in: atchayaarun35@gmail.com
-[2026-02-10 15:40:55] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:10:55 +0000] "POST /api/auth/login HTTP/1.1" 200 384 "http://localhost:5174/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:40:56] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:10:56 +0000] "GET /api/auth/profile HTTP/1.1" 200 222 "http://localhost:5174/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
-[2026-02-10 15:40:56] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:10:56 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5174/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:48:29] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:48:29] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:48:29] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:48:29] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:48:34] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:48:34] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:48:34] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:48:34] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:48:36] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:48:36] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:48:36] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:48:36] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:48:38] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:48:39] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:48:38] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:48:39] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:48:56] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:48:56] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:48:56] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:48:56] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:49:13] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:49:13] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:49:13] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:49:13] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:49:33] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:49:33] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:49:33] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:49:33] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:56:18] info: User logged in: atchayaarun35@gmail.com
+[2026-02-10 15:56:18] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:26:18 +0000] "POST /api/auth/login HTTP/1.1" 200 384 "http://localhost:5173/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:56:19] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:26:19 +0000] "GET /api/wallet/balance HTTP/1.1" 200 73 "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:56:19] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:26:19 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:56:19] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:26:19 +0000] "GET /api/auth/profile HTTP/1.1" 200 222 "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:56:19] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:26:19 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:56:25] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:26:25 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:56:25] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:26:25 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:56:25] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:56:25] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:26:25 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:56:26] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:56:26] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:26:26 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:57:38] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:27:38 +0000] "GET /api/wallet/balance HTTP/1.1" 200 76 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:57:38] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:27:38 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:57:38] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:57:38] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:27:38 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:57:39] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:57:39] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:27:39 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:57:45] info: User 3 added ₹12 to wallet. New balance: ₹1572
+[2026-02-10 15:57:45] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:27:45 +0000] "POST /api/wallet/add-money HTTP/1.1" 200 102 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:57:45] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:57:45] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:27:45 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:58:57] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:28:57 +0000] "GET /api/wallet/balance HTTP/1.1" 200 76 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:58:57] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:28:57 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:58:58] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:58:58] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:28:58 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:58:58] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:58:58] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:28:58 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:59:00] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:29:00 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:59:00] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:29:00 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:59:00] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:29:00 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:59:00] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:29:00 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:59:04] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:29:04 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:59:04] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:29:04 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:59:04] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:29:04 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:59:05] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:29:05 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:59:34] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:29:34 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:59:35] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:29:35 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:59:36] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:59:36] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:29:36 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:59:36] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:59:36] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:29:36 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:59:48] error: Add money error: Failed query: select "id", "name", "email", "mobile", "pan_card", "aadhaar_number", "password", "is_verified", "otp", "otp_expiry", "upi_id", "wallet_balance", "created_at", "updated_at" from "users" where "users"."id" = $1
+params: 3
+[2026-02-10 15:59:48] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:29:48 +0000] "POST /api/wallet/add-money HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:59:57] error: Add money error: Failed query: select "id", "name", "email", "mobile", "pan_card", "aadhaar_number", "password", "is_verified", "otp", "otp_expiry", "upi_id", "wallet_balance", "created_at", "updated_at" from "users" where "users"."id" = $1
+params: 3
+[2026-02-10 15:59:57] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:29:57 +0000] "POST /api/wallet/add-money HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:05:26] info: User 3 added ₹100 to wallet. New balance: ₹1672
+[2026-02-10 16:05:26] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:35:26 +0000] "POST /api/wallet/add-money HTTP/1.1" 200 103 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:05:26] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 16:05:26] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:35:26 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:05:34] info: User 3 added ₹1500 to wallet. New balance: ₹3172
+[2026-02-10 16:05:34] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:35:34 +0000] "POST /api/wallet/add-money HTTP/1.1" 200 104 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:05:34] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 16:05:34] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:35:34 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:06:46] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:06:46] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:06:46] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:06:46] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:06:47] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:06:48] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:06:48] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:06:48] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:06:52] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:06:52] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:06:52] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:06:52] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:07:14] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:07:14] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:07:14] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:07:14] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:07:26] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:07:26] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:07:26] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:07:26] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:08:13] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:08:13] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:08:13] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:08:13] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:08:25] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:08:25] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:08:25] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:08:25] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:08:44] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:38:44 +0000] "GET /api/wallet/balance HTTP/1.1" 200 76 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:08:45] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:38:45 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:08:45] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 16:08:45] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:38:45 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:08:45] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 16:08:45] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:38:45 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 500 51 "http://localhost:5173/wallet" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:08:47] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:38:47 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:08:47] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:38:47 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:08:47] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:38:47 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:08:47] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:38:47 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:11:04] info: OTP email sent to pnarvind06@gmail.com - Message ID: <b9d9ee31-6009-54d2-f24e-a3a21796ca0e@gmail.com>
+[2026-02-10 16:12:26] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:12:26] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:13:35] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:13:35] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:19:09] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:19:09] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:19:12] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:19:13] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:19:24] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:19:24] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:21:32] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:21:32] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:21:44] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:21:44] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:24:06] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:24:06] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:24:17] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:24:18] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:25:17] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:25:17] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:25:18] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:25:18] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:31:07] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:31:07] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:32:23] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:32:24] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:32:24] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:33:10] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:33:11] info: Database connection established with Neon PostgreSQL
+[2026-02-10 16:33:11] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 16:33:33] info: User logged in: pnarvind06@gmail.com
+[2026-02-10 16:33:33] info: ::ffff:127.0.0.1 - - [10/Feb/2026:11:03:33 +0000] "POST /api/auth/login HTTP/1.1" 200 374 "http://localhost:5173/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:33:33] info: ::ffff:127.0.0.1 - - [10/Feb/2026:11:03:33 +0000] "GET /api/auth/profile HTTP/1.1" 200 216 "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:33:33] info: ::ffff:127.0.0.1 - - [10/Feb/2026:11:03:33 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:33:33] info: ::ffff:127.0.0.1 - - [10/Feb/2026:11:03:33 +0000] "GET /api/wallet/balance HTTP/1.1" 200 90 "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:33:34] info: ::ffff:127.0.0.1 - - [10/Feb/2026:11:03:34 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:33:39] error: Profile fetch error: Failed query: select "id", "name", "email", "mobile", "pan_card", "aadhaar_number", "is_verified", "created_at" from "users" where "users"."id" = $1
+params: 4
+[2026-02-10 16:33:39] info: ::ffff:127.0.0.1 - - [10/Feb/2026:11:03:39 +0000] "GET /api/auth/profile HTTP/1.1" 500 51 "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:33:39] error: Get wallet balance error: Failed query: select "wallet_balance", "upi_id", "name" from "users" where "users"."id" = $1
+params: 4
+[2026-02-10 16:33:39] info: ::ffff:127.0.0.1 - - [10/Feb/2026:11:03:39 +0000] "GET /api/wallet/balance HTTP/1.1" 500 51 "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:33:39] error: Profile fetch error: Failed query: select "id", "name", "email", "mobile", "pan_card", "aadhaar_number", "is_verified", "created_at" from "users" where "users"."id" = $1
+params: 4
+[2026-02-10 16:33:39] info: ::ffff:127.0.0.1 - - [10/Feb/2026:11:03:39 +0000] "GET /api/auth/profile HTTP/1.1" 500 51 "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 16:33:39] error: Get wallet balance error: Failed query: select "wallet_balance", "upi_id", "name" from "users" where "users"."id" = $1
+params: 4
+[2026-02-10 16:33:39] info: ::ffff:127.0.0.1 - - [10/Feb/2026:11:03:39 +0000] "GET /api/wallet/balance HTTP/1.1" 500 51 "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 19:52:06] info: Database connection established with Neon PostgreSQL
+[2026-02-10 19:52:07] info: Database connection established with Neon PostgreSQL
+[2026-02-10 19:52:07] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 19:52:32] info: User logged in: pnarvind06@gmail.com
+[2026-02-10 19:52:32] info: ::ffff:127.0.0.1 - - [10/Feb/2026:14:22:32 +0000] "POST /api/auth/login HTTP/1.1" 200 374 "http://localhost:5173/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 19:52:32] info: ::ffff:127.0.0.1 - - [10/Feb/2026:14:22:32 +0000] "GET /api/auth/profile HTTP/1.1" 200 216 "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 19:52:32] info: ::ffff:127.0.0.1 - - [10/Feb/2026:14:22:32 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 19:52:32] info: ::ffff:127.0.0.1 - - [10/Feb/2026:14:22:32 +0000] "GET /api/wallet/balance HTTP/1.1" 200 90 "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 19:52:32] info: ::ffff:127.0.0.1 - - [10/Feb/2026:14:22:32 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
