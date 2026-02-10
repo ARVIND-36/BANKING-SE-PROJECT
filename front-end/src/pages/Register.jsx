@@ -58,6 +58,12 @@ const Register = () => {
       const res = await api.post("/auth/register", payload);
       toast.success(res.data.message);
       
+      // Log OTP in development mode for easier testing
+      if (res.data.data.otp) {
+        console.log("🔐 Development Mode - Your OTP is:", res.data.data.otp);
+        toast.success(`OTP: ${res.data.data.otp} (Check console)`, { duration: 10000 });
+      }
+      
       // Navigate to OTP verification page with email and name
       navigate("/verify-otp", { 
         state: { 
@@ -66,7 +72,9 @@ const Register = () => {
         } 
       });
     } catch (err) {
-      toast.error(err.response?.data?.message || "Registration failed");
+      const errorMsg = err.response?.data?.message || err.message || "Registration failed";
+      toast.error(errorMsg);
+      console.error("Registration error:", err);
     } finally {
       setIsLoading(false);
     }

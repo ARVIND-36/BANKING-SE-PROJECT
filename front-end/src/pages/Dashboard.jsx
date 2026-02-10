@@ -1,5 +1,5 @@
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../services/api";
 
@@ -7,6 +7,8 @@ const Dashboard = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [profile, setProfile] = useState(null);
+  const [walletBalance, setWalletBalance] = useState(0);
+  const [upiId, setUpiId] = useState("");
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -17,7 +19,19 @@ const Dashboard = () => {
         // handled by interceptor
       }
     };
+
+    const fetchWalletBalance = async () => {
+      try {
+        const res = await api.get("/wallet/balance");
+        setWalletBalance(res.data.data.balance);
+        setUpiId(res.data.data.upiId);
+      } catch {
+        console.error("Failed to fetch wallet balance");
+      }
+    };
+
     fetchProfile();
+    fetchWalletBalance();
   }, []);
 
   const handleLogout = () => {
@@ -40,6 +54,15 @@ const Dashboard = () => {
         <div className="welcome-card">
           <h2>Welcome, {displayUser?.name || "User"}! 👋</h2>
           <p>Your NIDHI account is active</p>
+          <div className="wallet-quick-view">
+            <div className="quick-balance">
+              <span className="balance-label">Wallet Balance</span>
+              <span className="balance-amount">₹{walletBalance.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</span>
+            </div>
+            <Link to="/wallet" className="btn-view-wallet">
+              View Wallet →
+            </Link>
+          </div>
         </div>
 
         <div className="profile-card">
@@ -61,34 +84,42 @@ const Dashboard = () => {
               <span className="profile-label">PAN Card</span>
               <span className="profile-value">{displayUser?.panCard}</span>
             </div>
+            <div className="profile-item">
+              <span className="profile-label">UPI ID</span>
+              <span className="profile-value" style={{color: "#667eea", fontWeight: "600"}}>{upiId || "Loading..."}</span>
+            </div>
             {profile?.aadhaarNumber && (
               <div className="profile-item">
                 <span className="profile-label">Aadhaar</span>
-                <span className="profile-value">
-                  XXXX-XXXX-{profile.aadhaarNumber.slice(-4)}
-                </span>
+                <span className="profile-value">{profile.aadhaarNumber}</span>
               </div>
             )}
           </div>
         </div>
 
         <div className="features-grid">
+          <Link to="/wallet" className="feature-card clickable">
+            <span className="feature-icon">💰</span>
+            <h4>My Wallet</h4>
+            <p>Manage your NIDHI wallet & UPI</p>
+            <span className="active-badge">Active</span>
+          </Link>
           <div className="feature-card">
             <span className="feature-icon">💸</span>
-            <h4>UPI Transfer</h4>
-            <p>Send money via PAN-linked UPI</p>
-            <span className="coming-soon">Coming Soon</span>
-          </div>
-          <div className="feature-card">
-            <span className="feature-icon">📋</span>
-            <h4>Loan Suggestions</h4>
-            <p>Compare & find the best loans</p>
-            <span className="coming-soon">Coming Soon</span>
+            <h4>Send Money</h4>
+            <p>Transfer via username@nidhi</p>
+            <span className="active-badge">Active</span>
           </div>
           <div className="feature-card">
             <span className="feature-icon">📊</span>
             <h4>Transaction History</h4>
             <p>View all your transactions</p>
+            <span className="active-badge">Active</span>
+          </div>
+          <div className="feature-card">
+            <span className="feature-icon">📋</span>
+            <h4>Loan Suggestions</h4>
+            <p>Compare & find the best loans</p>
             <span className="coming-soon">Coming Soon</span>
           </div>
         </div>

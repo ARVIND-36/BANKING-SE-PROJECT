@@ -1,0 +1,38 @@
+[2026-02-10 15:56:25] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:56:26] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:57:38] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:57:39] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:57:45] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:58:58] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:58:58] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:59:36] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:59:36] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 15:59:48] error: Add money error: Failed query: select "id", "name", "email", "mobile", "pan_card", "aadhaar_number", "password", "is_verified", "otp", "otp_expiry", "upi_id", "wallet_balance", "created_at", "updated_at" from "users" where "users"."id" = $1
+params: 3
+[2026-02-10 15:59:57] error: Add money error: Failed query: select "id", "name", "email", "mobile", "pan_card", "aadhaar_number", "password", "is_verified", "otp", "otp_expiry", "upi_id", "wallet_balance", "created_at", "updated_at" from "users" where "users"."id" = $1
+params: 3
+[2026-02-10 16:05:26] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 16:05:34] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 16:08:45] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 16:08:45] error: Get transaction history error: Failed query: select "id", "name", "upi_id" from "users" where "users"."id" IN ($1)
+params: 
+[2026-02-10 16:33:39] error: Profile fetch error: Failed query: select "id", "name", "email", "mobile", "pan_card", "aadhaar_number", "is_verified", "created_at" from "users" where "users"."id" = $1
+params: 4
+[2026-02-10 16:33:39] error: Get wallet balance error: Failed query: select "wallet_balance", "upi_id", "name" from "users" where "users"."id" = $1
+params: 4
+[2026-02-10 16:33:39] error: Profile fetch error: Failed query: select "id", "name", "email", "mobile", "pan_card", "aadhaar_number", "is_verified", "created_at" from "users" where "users"."id" = $1
+params: 4
+[2026-02-10 16:33:39] error: Get wallet balance error: Failed query: select "wallet_balance", "upi_id", "name" from "users" where "users"."id" = $1
+params: 4

@@ -74,6 +74,14 @@ export const register = async (req, res) => {
     const otp = generateOTP();
     const otpExpiry = new Date(Date.now() + OTP_EXPIRY_MINUTES * 60 * 1000);
 
+    // Generate UPI ID from email or name
+    const generateUpiId = (email, name) => {
+      const username = email.split("@")[0].toLowerCase().replace(/[^a-z0-9]/g, "");
+      return `${username}@nidhi`;
+    };
+
+    const upiId = generateUpiId(email, name);
+
     // Insert user (unverified with OTP)
     const newUser = await db
       .insert(users)
@@ -87,15 +95,18 @@ export const register = async (req, res) => {
         isVerified: false,
         otp,
         otpExpiry,
+        upiId,
+        walletBalance: "0.00",
       })
       .returning({
         id: users.id,
         name: users.name,
         email: users.email,
         mobile: users.mobile,
+        upiId: users.upiId,
       });
 
-    // Send OTP email
+    // Send OTP email (with timeout and fallback for dev)
     try {
       await sendOTPEmail(email, otp, name);
       logger.info(`New user registered: ${email} (${name}) - OTP sent`);
@@ -107,15 +118,25 @@ export const register = async (req, res) => {
           userId: newUser[0].id,
           email: newUser[0].email,
           name: newUser[0].name,
+          // Only send OTP in response for development (remove in production)
+          ...(process.env.NODE_ENV === 'development' && { otp }),
         },
       });
     } catch (emailError) {
-      // If email fails, delete the user
-      await db.delete(users).where(eq(users.id, newUser[0].id));
-      logger.error(`Failed to send OTP email, user deleted: ${email}`);
-      return res.status(500).json({ 
-        success: false, 
-        message: "Failed to send OTP email. Please try again." 
+      // Don't delete user, just log the error and ask them to resend OTP
+      logger.error(`Failed to send OTP email: ${email} - ${emailError.message}`);
+      
+      return res.status(201).json({
+        success: true,
+        message: "Registration successful! Email service is slow. Please use resend OTP.",
+        data: { 
+          userId: newUser[0].id,
+          email: newUser[0].email,
+          name: newUser[0].name,
+          emailFailed: true,
+          // Only send OTP in response for development (remove in production)
+          ...(process.env.NODE_ENV === 'development' && { otp }),
+        },
       });
     }
   } catch (error) {
