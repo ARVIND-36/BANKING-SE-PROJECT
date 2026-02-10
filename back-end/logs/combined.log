@@ -1,0 +1,65 @@
+[2026-02-10 15:09:48] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:09:48] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:09:50] info: ::1 - - [10/Feb/2026:09:39:50 +0000] "GET /api/health HTTP/1.1" 200 72 "-" "curl/8.5.0"
+[2026-02-10 15:14:14] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:14:14] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:15:17] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:15:17] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:15:38] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:15:38] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:19:59] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:19:59] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:20:29] info: ::1 - - [10/Feb/2026:09:50:29 +0000] "GET / HTTP/1.1" 404 45 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:20:29] info: ::1 - - [10/Feb/2026:09:50:29 +0000] "GET /favicon.ico HTTP/1.1" 404 45 "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:20:32] info: ::1 - - [10/Feb/2026:09:50:32 +0000] "GET / HTTP/1.1" 404 45 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:21:40] info: ::ffff:127.0.0.1 - - [10/Feb/2026:09:51:40 +0000] "GET /api/health HTTP/1.1" 200 72 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:23:45] info: New user registered: kbhuvana2005@gmail.com (BHUVANA K )
+[2026-02-10 15:23:45] info: ::ffff:127.0.0.1 - - [10/Feb/2026:09:53:45 +0000] "POST /api/auth/register HTTP/1.1" 201 367 "http://localhost:5173/register" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:23:45] info: ::ffff:127.0.0.1 - - [10/Feb/2026:09:53:45 +0000] "GET /api/auth/profile HTTP/1.1" 200 200 "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:23:45] info: ::ffff:127.0.0.1 - - [10/Feb/2026:09:53:45 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5173/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:26:21] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:26:21] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:26:36] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:26:36] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:26:54] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:26:54] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:26:56] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:26:56] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:27:04] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:27:04] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:27:07] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:27:07] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:27:12] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:27:12] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:27:50] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:27:50] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:28:00] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:28:00] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:28:15] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:28:15] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:28:29] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:28:29] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:30:19] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:30:20] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:31:21] info: OTP email sent to kbhuvana2005@gmail.com - Message ID: <557a4756-61ec-1adb-74a5-2c7823ea25c5@gmail.com>
+[2026-02-10 15:31:21] info: New user registered: kbhuvana2005@gmail.com (BHUVANA K ) - OTP sent
+[2026-02-10 15:31:21] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:01:21 +0000] "POST /api/auth/register HTTP/1.1" 201 172 "http://localhost:5174/register" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:31:36] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:31:36] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:31:36] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:31:36] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:31:36] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:31:36] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:31:36] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:31:36] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:32:28] info: User verified successfully: kbhuvana2005@gmail.com
+[2026-02-10 15:32:28] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:02:28 +0000] "POST /api/auth/verify-otp HTTP/1.1" 200 372 "http://localhost:5174/verify-otp" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:32:52] info: User logged in: kbhuvana2005@gmail.com
+[2026-02-10 15:32:52] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:02:52 +0000] "POST /api/auth/login HTTP/1.1" 200 378 "http://localhost:5174/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:32:52] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:02:52 +0000] "GET /api/auth/profile HTTP/1.1" 200 218 "http://localhost:5174/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:32:52] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:02:52 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5174/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:33:18] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:33:18] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:33:18] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:33:18] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:33:28] info: OTP email sent to pnarvind05@gmail.com - Message ID: <06d875e3-a345-c4d9-30cb-e244b7f745c5@gmail.com>
