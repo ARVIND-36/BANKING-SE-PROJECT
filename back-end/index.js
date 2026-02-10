@@ -4,8 +4,20 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import logger from "./src/utils/logger.js";
 import authRoutes from "./src/routes/auth.routes.js";
+import walletRoutes from "./src/routes/wallet.routes.js";
+import migrationRoutes from "./src/routes/migration.routes.js";
+import db from "./src/config/db.js";
 
 dotenv.config();
+
+// Test database connection
+try {
+  await db.execute('SELECT 1');
+  logger.info('Database connection established with Neon PostgreSQL');
+} catch (error) {
+  logger.error(`Database connection failed: ${error.message}`);
+  process.exit(1);
+}
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -24,6 +36,8 @@ app.use(
 
 // ─── Routes ─────────────────────────────────────────────────
 app.use("/api/auth", authRoutes);
+app.use("/api/wallet", walletRoutes);
+app.use("/api/migration", migrationRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {
