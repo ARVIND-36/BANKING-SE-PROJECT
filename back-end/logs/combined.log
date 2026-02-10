@@ -63,3 +63,16 @@
 [2026-02-10 15:33:18] info: Database connection established with Neon PostgreSQL
 [2026-02-10 15:33:18] info: 🚀 NIDHI server running on http://localhost:5000
 [2026-02-10 15:33:28] info: OTP email sent to pnarvind05@gmail.com - Message ID: <06d875e3-a345-c4d9-30cb-e244b7f745c5@gmail.com>
+[2026-02-10 15:37:27] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:37:27] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:37:27] info: Database connection established with Neon PostgreSQL
+[2026-02-10 15:37:27] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-10 15:39:44] info: OTP email sent to atchayaarun35@gmail.com - Message ID: <3e27393f-0070-b150-0fa6-166b228b96c4@gmail.com>
+[2026-02-10 15:39:44] info: New user registered: atchayaarun35@gmail.com (ATCHAYA ARUN ) - OTP sent
+[2026-02-10 15:39:44] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:09:44 +0000] "POST /api/auth/register HTTP/1.1" 201 176 "http://localhost:5174/register" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:40:16] info: User verified successfully: atchayaarun35@gmail.com
+[2026-02-10 15:40:16] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:10:16 +0000] "POST /api/auth/verify-otp HTTP/1.1" 200 378 "http://localhost:5174/verify-otp" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:40:55] info: User logged in: atchayaarun35@gmail.com
+[2026-02-10 15:40:55] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:10:55 +0000] "POST /api/auth/login HTTP/1.1" 200 384 "http://localhost:5174/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:40:56] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:10:56 +0000] "GET /api/auth/profile HTTP/1.1" 200 222 "http://localhost:5174/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-10 15:40:56] info: ::ffff:127.0.0.1 - - [10/Feb/2026:10:10:56 +0000] "GET /api/auth/profile HTTP/1.1" 304 - "http://localhost:5174/dashboard" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
