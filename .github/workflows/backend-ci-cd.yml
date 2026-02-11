@@ -51,6 +51,7 @@ jobs:
         NODE_ENV: test
         DATABASE_URL: postgresql://postgres:postgres@localhost:5432/banking_test
     
+        
     - name: Build
       working-directory: ./back-end
       run: npm run build --if-present

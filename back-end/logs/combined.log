@@ -758,3 +758,9 @@ params: 5,5,4
 params: 5,5,20
 [2026-02-11 09:17:50] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
 params: 5,5,4
+[2026-02-11 09:35:34] info: ::ffff:127.0.0.1 - - [11/Feb/2026:04:05:34 +0000] "GET /api/wallet/balance HTTP/1.1" 200 89 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 09:35:34] info: ::ffff:127.0.0.1 - - [11/Feb/2026:04:05:34 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 09:35:35] info: ::ffff:127.0.0.1 - - [11/Feb/2026:04:05:35 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 200 767 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 09:35:35] info: ::ffff:127.0.0.1 - - [11/Feb/2026:04:05:35 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 200 767 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 09:35:35] info: ::ffff:127.0.0.1 - - [11/Feb/2026:04:05:35 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 09:35:35] info: ::ffff:127.0.0.1 - - [11/Feb/2026:04:05:35 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
