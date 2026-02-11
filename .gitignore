@@ -1,4 +1,33 @@
+# Backend
 back-end/node_modules/
 back-end/.env
+back-end/.env.local
+back-end/.env.production.local
+back-end/logs/
+back-end/dist/
+
+# Frontend
+front-end/node_modules/
+front-end/.env.local
+front-end/.env.production.local
+front-end/dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
 logs/
-back-end/logs/combined.log
+*.log
+npm-debug.log*
+
+# Misc
+.cache/
+.turbo/
