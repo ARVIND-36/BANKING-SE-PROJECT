@@ -150,3 +150,51 @@ params: 5,5,4
 params: 5,5,20
 [2026-02-11 09:17:50] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
 params: 5,5,4
+[2026-02-11 10:41:59] error: Get wallet balance error: Failed query: select "wallet_balance", "upi_id", "name" from "users" where "users"."id" = $1
+params: 4
+[2026-02-11 10:41:59] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 4,4,4
+[2026-02-11 10:41:59] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 4,4,20
+[2026-02-11 10:41:59] error: Get wallet balance error: Failed query: select "wallet_balance", "upi_id", "name" from "users" where "users"."id" = $1
+params: 4
+[2026-02-11 10:41:59] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 4,4,4
+[2026-02-11 10:41:59] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 4,4,20
+[2026-02-11 10:42:00] error: Get wallet balance error: Failed query: select "wallet_balance", "upi_id", "name" from "users" where "users"."id" = $1
+params: 5
+[2026-02-11 10:42:00] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 5,5,4
+[2026-02-11 10:42:00] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 5,5,20
+[2026-02-11 10:42:00] error: Get wallet balance error: Failed query: select "wallet_balance", "upi_id", "name" from "users" where "users"."id" = $1
+params: 5
+[2026-02-11 10:42:00] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 5,5,4
+[2026-02-11 10:42:00] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 5,5,20
+[2026-02-11 10:42:00] error: Get wallet balance error: Failed query: select "wallet_balance", "upi_id", "name" from "users" where "users"."id" = $1
+params: 5
+[2026-02-11 10:42:00] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 5,5,4
+[2026-02-11 10:42:00] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 5,5,20
+[2026-02-11 10:42:00] error: Get wallet balance error: Failed query: select "wallet_balance", "upi_id", "name" from "users" where "users"."id" = $1
+params: 5
+[2026-02-11 10:42:00] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 5,5,4
+[2026-02-11 10:42:00] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 5,5,20
+[2026-02-11 10:42:00] error: Get wallet balance error: Failed query: select "wallet_balance", "upi_id", "name" from "users" where "users"."id" = $1
+params: 5
+[2026-02-11 10:42:00] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 5,5,4
+[2026-02-11 10:42:00] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 5,5,20
+[2026-02-11 10:42:00] error: Get wallet balance error: Failed query: select "wallet_balance", "upi_id", "name" from "users" where "users"."id" = $1
+params: 5
+[2026-02-11 10:42:00] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 5,5,4
+[2026-02-11 10:42:00] error: Get transaction history error: Failed query: select "id", "transaction_id", "sender_id", "receiver_id", "amount", "status", "type", "description", "created_at", "completed_at" from "transactions" where ("transactions"."sender_id" = $1 or "transactions"."receiver_id" = $2) order by "transactions"."created_at" desc limit $3
+params: 5,5,20
