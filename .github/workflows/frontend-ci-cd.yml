@@ -11,7 +11,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
     - uses: actions/checkout@v4
     
@@ -36,7 +35,7 @@ jobs:
       env:
         VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL }}
     
-        
+
     - name: Upload build artifact
       uses: actions/upload-artifact@v4
       with:
