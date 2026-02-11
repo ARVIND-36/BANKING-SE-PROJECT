@@ -62,7 +62,7 @@ jobs:
     
     - name: Deploy to Azure Static Web Apps
       run: |
-        az staticwebapp upload \
+        az staticwebapp deploy \
           --name nidhi \
           --resource-group NIDHI-BANKING \
           --source front-end/dist \
