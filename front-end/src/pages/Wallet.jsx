@@ -4,7 +4,6 @@ import api from "../services/api";
 import toast from "react-hot-toast";
 
 const Wallet = () => {
-  const { user } = useAuth();
   const [balance, setBalance] = useState(0);
   const [upiId, setUpiId] = useState("");
   const [transactions, setTransactions] = useState([]);
@@ -36,7 +35,7 @@ const Wallet = () => {
       setBalance(res.data.data.balance);
       setUpiId(res.data.data.upiId);
     } catch (err) {
-      toast.error("Failed to fetch wallet data");
+      toast.error(err.response?.data?.message || "Failed to fetch wallet data");
     } finally {
       setIsLoading(false);
     }
@@ -63,7 +62,7 @@ const Wallet = () => {
     } catch (err) {
       setReceiverName("");
       if (upiIdToSearch.length > 5) {
-        toast.error("UPI ID not found");
+        toast.error(err.response?.data?.message || "UPI ID not found");
       }
     }
   };

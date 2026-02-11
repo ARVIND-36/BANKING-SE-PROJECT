@@ -15,7 +15,7 @@ const Transactions = () => {
       const res = await api.get("/wallet/transactions?limit=100");
       setTransactions(res.data.data.transactions || []);
     } catch (err) {
-      console.error("Failed to fetch transactions");
+      console.error("Failed to fetch transactions", err);
     } finally {
       setIsLoading(false);
     }

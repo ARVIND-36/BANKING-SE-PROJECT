@@ -8,14 +8,16 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedToken = localStorage.getItem("nidhi_token");
-    const savedUser = localStorage.getItem("nidhi_user");
-    if (savedToken && savedUser) {
-      setToken(savedToken);
-      setUser(JSON.parse(savedUser));
-    }
-    const timer = setTimeout(() => setLoading(false), 0);
-    return () => clearTimeout(timer);
+    const loadAuth = async () => {
+      const savedToken = localStorage.getItem("nidhi_token");
+      const savedUser = localStorage.getItem("nidhi_user");
+      if (savedToken && savedUser) {
+        setToken(savedToken);
+        setUser(JSON.parse(savedUser));
+      }
+      setLoading(false);
+    };
+    loadAuth();
   }, []);
 
   const login = async (identifier, password) => {

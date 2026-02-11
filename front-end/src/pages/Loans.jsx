@@ -19,7 +19,6 @@ const EMPLOYMENT_TYPES = [
 ];
 
 const Loans = () => {
-  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [selectedType, setSelectedType] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -29,7 +28,6 @@ const Loans = () => {
 
   // Saved user profile for auto-fill
   const [savedProfile, setSavedProfile] = useState(null);
-  const [profileLoaded, setProfileLoaded] = useState(false);
 
   // Dynamic fields for the selected loan type
   const [typeFields, setTypeFields] = useState([]);

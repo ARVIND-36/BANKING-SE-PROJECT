@@ -54,9 +54,14 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchWalletData();
-    fetchRecentTransactions();
-    fetchRecentPeople();
+    const loadData = async () => {
+      await Promise.all([
+        fetchWalletData(),
+        fetchRecentTransactions(),
+        fetchRecentPeople(),
+      ]);
+    };
+    loadData();
   }, []);
 
   const toggleBalance = async () => {

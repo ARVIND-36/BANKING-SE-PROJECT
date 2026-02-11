@@ -7,7 +7,6 @@ import toast from "react-hot-toast";
 const VerifyOTP = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { login } = useAuth();
   
   const email = location.state?.email || "";
   const userName = location.state?.name || "";
