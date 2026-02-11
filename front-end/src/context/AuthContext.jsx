@@ -1,9 +1,6 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import api from "../services/api";
-
-const AuthContext = createContext(null);
-
-export const useAuth = () => useContext(AuthContext);
+import AuthContext from "./authContext";
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -17,7 +14,8 @@ export const AuthProvider = ({ children }) => {
       setToken(savedToken);
       setUser(JSON.parse(savedUser));
     }
-    setLoading(false);
+    const timer = setTimeout(() => setLoading(false), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const login = async (identifier, password) => {

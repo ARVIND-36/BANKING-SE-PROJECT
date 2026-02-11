@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/useAuth";
 import api from "../services/api";
 import toast from "react-hot-toast";
 
@@ -13,19 +13,13 @@ const Home = () => {
   const [recentPeople, setRecentPeople] = useState([]);
   const [showBalance, setShowBalance] = useState(false);
 
-  useEffect(() => {
-    fetchWalletData();
-    fetchRecentTransactions();
-    fetchRecentPeople();
-  }, []);
-
   const fetchWalletData = async () => {
     try {
       const res = await api.get("/wallet/balance");
       setBalance(parseFloat(res.data.data.balance));
       setUpiId(res.data.data.upiId);
     } catch (err) {
-      console.error("Failed to fetch wallet data");
+      console.error("Failed to fetch wallet data", err);
     }
   };
 
@@ -34,7 +28,7 @@ const Home = () => {
       const res = await api.get("/wallet/transactions?limit=4");
       setRecentTransactions(res.data.data.transactions || []);
     } catch (err) {
-      console.error("Failed to fetch transactions");
+      console.error("Failed to fetch transactions", err);
     }
   };
 
@@ -55,16 +49,24 @@ const Home = () => {
       });
       setRecentPeople(Array.from(peopleMap.values()).slice(0, 6));
     } catch (err) {
-      console.error("Failed to fetch recent people");
+      console.error("Failed to fetch recent people", err);
     }
   };
+
+  useEffect(() => {
+    fetchWalletData();
+    fetchRecentTransactions();
+    fetchRecentPeople();
+  }, []);
 
   const toggleBalance = async () => {
     if (!showBalance) {
       try {
         const res = await api.get("/wallet/balance");
         setBalance(parseFloat(res.data.data.balance));
-      } catch (err) { /* use cached */ }
+      } catch (err) {
+        console.error("Failed to refresh balance", err);
+      }
     }
     setShowBalance(!showBalance);
   };
