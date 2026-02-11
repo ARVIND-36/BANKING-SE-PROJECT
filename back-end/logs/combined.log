@@ -617,3 +617,84 @@ params: 4,4,4
 [2026-02-11 01:16:07] info: ::ffff:127.0.0.1 - - [10/Feb/2026:19:46:07 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 500 51 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
 [2026-02-11 08:40:20] info: Database connection established with Neon PostgreSQL
 [2026-02-11 08:40:28] info: Database connection established with Neon PostgreSQL
+[2026-02-11 08:52:38] info: Database connection established with Neon PostgreSQL
+[2026-02-11 08:52:39] info: Database connection established with Neon PostgreSQL
+[2026-02-11 08:52:39] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-11 08:52:51] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:22:51 +0000] "GET /api/wallet/balance HTTP/1.1" 200 89 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:52:51] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:22:51 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 200 539 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:52:51] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:22:51 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:52:51] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:22:51 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:52:51] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:22:51 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 200 539 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:52:51] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:22:51 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:09] info: OTP email sent to dhanush.8305@gmail.com - Message ID: <db38dc39-0091-f9bd-5a63-69435ee6d543@gmail.com>
+[2026-02-11 08:54:09] info: New user registered: dhanush.8305@gmail.com (DHANUSH M) - OTP sent
+[2026-02-11 08:54:09] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:09 +0000] "POST /api/auth/register HTTP/1.1" 201 186 "http://localhost:5173/register" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:26] info: User verified successfully: dhanush.8305@gmail.com
+[2026-02-11 08:54:26] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:26 +0000] "POST /api/auth/verify-otp HTTP/1.1" 200 371 "http://localhost:5173/verify-otp" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:45] info: User logged in: dhanush.8305@gmail.com
+[2026-02-11 08:54:45] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:45 +0000] "POST /api/auth/login HTTP/1.1" 200 377 "http://localhost:5173/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:46] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:46 +0000] "GET /api/wallet/balance HTTP/1.1" 200 84 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:46] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:46 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:46] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:46 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 200 69 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:46] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:46 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 200 69 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:46] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:46 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:46] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:46 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:47] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:47 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:54] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:54 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:54] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:54 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:54] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:54 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:54] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:54 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:54] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:54 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:54] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:54 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:54:58] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:24:58 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:04] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:04 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:04] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:04 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:04] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:04 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:04] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:04 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:04] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:04 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:04] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:04 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:05] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:05 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:33] info: User logged in: pnarvind06@gmail.com
+[2026-02-11 08:55:33] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:33 +0000] "POST /api/auth/login HTTP/1.1" 200 374 "http://localhost:5173/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:33] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:33 +0000] "GET /api/wallet/balance HTTP/1.1" 200 89 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:34] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:34 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:36] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:36 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:40] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:40 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 200 539 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:40] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:40 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 200 539 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:42] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:42 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:42] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:42 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:49] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:49 +0000] "GET /api/wallet/search?upiId=938 HTTP/1.1" 404 46 "http://localhost:5173/pay" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:50] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:50 +0000] "GET /api/wallet/search?upiId=93855 HTTP/1.1" 404 46 "http://localhost:5173/pay" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:50] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:50 +0000] "GET /api/wallet/search?upiId=9385500 HTTP/1.1" 404 46 "http://localhost:5173/pay" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:55:52] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:25:52 +0000] "GET /api/wallet/search?upiId=9385500434 HTTP/1.1" 200 72 "http://localhost:5173/pay" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:56:11] info: Transaction TXNMLHGWV35ELGRRDF: ARVIND P N sent ₹100000 to DHANUSH M (9385500434)
+[2026-02-11 08:56:26] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:26:26 +0000] "GET /api/wallet/balance HTTP/1.1" 200 89 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:56:26] error: Failed to send transaction email to pnarvind06@gmail.com: Email timeout
+[2026-02-11 08:56:26] error: Failed to send transaction email to dhanush.8305@gmail.com: Email timeout
+[2026-02-11 08:56:26] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:26:26 +0000] "POST /api/wallet/send HTTP/1.1" 200 238 "http://localhost:5173/pay" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:56:27] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:26:27 +0000] "GET /api/wallet/balance HTTP/1.1" 200 89 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:56:28] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:26:28 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:56:28] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:26:28 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:56:28] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:26:28 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 200 767 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:56:29] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:26:29 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 200 767 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:56:32] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:26:32 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 08:56:33] info: ::ffff:127.0.0.1 - - [11/Feb/2026:03:26:33 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+[2026-02-11 09:00:28] info: Database connection established with Neon PostgreSQL
+[2026-02-11 09:00:37] info: Database connection established with Neon PostgreSQL
+[2026-02-11 09:00:37] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-11 09:03:23] info: Database connection established with Neon PostgreSQL
+[2026-02-11 09:03:24] info: Database connection established with Neon PostgreSQL
+[2026-02-11 09:03:24] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-11 09:08:57] info: Database connection established with Neon PostgreSQL
+[2026-02-11 09:09:01] info: Database connection established with Neon PostgreSQL
+[2026-02-11 09:09:01] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-11 09:09:06] info: Database connection established with Neon PostgreSQL
+[2026-02-11 09:09:10] info: Database connection established with Neon PostgreSQL
+[2026-02-11 09:09:10] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-11 09:09:12] info: Database connection established with Neon PostgreSQL
+[2026-02-11 09:09:14] info: Database connection established with Neon PostgreSQL
+[2026-02-11 09:09:15] info: Database connection established with Neon PostgreSQL
+[2026-02-11 09:09:15] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-11 09:09:19] info: Database connection established with Neon PostgreSQL
+[2026-02-11 09:09:20] info: Database connection established with Neon PostgreSQL
+[2026-02-11 09:09:20] info: 🚀 NIDHI server running on http://localhost:5000
