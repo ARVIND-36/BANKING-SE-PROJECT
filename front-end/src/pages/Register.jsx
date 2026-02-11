@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/useAuth";
 import api from "../services/api";
 import toast from "react-hot-toast";
 
@@ -53,6 +52,7 @@ const Register = () => {
 
     setIsLoading(true);
     try {
+      // eslint-disable-next-line no-unused-vars
       const { confirmPassword, ...payload } = form;
       const res = await api.post("/auth/register", payload);
       toast.success(res.data.message);

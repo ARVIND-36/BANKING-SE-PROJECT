@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import toast from "react-hot-toast";
 
@@ -53,7 +52,7 @@ const Loans = () => {
     try {
       const res = await api.get("/loans/my-applications");
       setPastApps(res.data.data.applications || []);
-    } catch (err) { /* silent */ }
+    } catch { /* silent */ }
   };
 
   const fetchSavedProfile = async () => {
@@ -62,9 +61,8 @@ const Loans = () => {
       if (res.data.data.profile) {
         setSavedProfile(res.data.data.profile);
       }
-      setProfileLoaded(true);
-    } catch (err) {
-      setProfileLoaded(true);
+    } catch {
+      /* silent */
     }
   };
 
@@ -72,7 +70,7 @@ const Loans = () => {
     try {
       const res = await api.get(`/loans/fields/${typeKey}`);
       setTypeFields(res.data.data.fields || []);
-    } catch (err) {
+    } catch {
       setTypeFields([]);
     }
   };
