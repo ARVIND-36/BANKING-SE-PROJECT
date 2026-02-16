@@ -43,7 +43,7 @@ export const createOrder = async (req, res) => {
             currency: newOrder[0].currency,
             status: newOrder[0].status,
             created_at: newOrder[0].createdAt,
-            checkout_url: `http://localhost:5173/pay/checkout/${orderId}` // Frontend URL
+            checkout_url: `${process.env.FRONTEND_URL || 'http://localhost:5173'}/pay/checkout/${orderId}`
         });
     } catch (error) {
         logger.error(`Order creation error: ${error.message}`);
