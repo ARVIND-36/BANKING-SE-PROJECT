@@ -47,8 +47,20 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("nidhi_user");
   };
 
+  const refreshUser = async () => {
+    try {
+      const res = await api.get("/auth/profile");
+      const userData = res.data.data;
+      setUser(userData);
+      localStorage.setItem("nidhi_user", JSON.stringify(userData));
+      return userData;
+    } catch (error) {
+      console.error("Failed to refresh user profile", error);
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, token, loading, login, register, logout }}>
+    <AuthContext.Provider value={{ user, token, loading, login, register, logout, refreshUser }}>
       {children}
     </AuthContext.Provider>
   );

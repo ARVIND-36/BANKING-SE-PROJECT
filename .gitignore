@@ -6,6 +6,7 @@ back-end/.env.production.local
 back-end/logs/
 back-end/dist/
 back-end/Logs
+back-end/drizzle
 
 # Frontend
 front-end/node_modules/

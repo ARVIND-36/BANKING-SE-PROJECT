@@ -114,7 +114,7 @@ export const register = async (req, res) => {
       return res.status(201).json({
         success: true,
         message: "Registration successful! Please check your email for OTP verification.",
-        data: { 
+        data: {
           userId: newUser[0].id,
           email: newUser[0].email,
           name: newUser[0].name,
@@ -125,11 +125,11 @@ export const register = async (req, res) => {
     } catch (emailError) {
       // Don't delete user, just log the error and ask them to resend OTP
       logger.error(`Failed to send OTP email: ${email} - ${emailError.message}`);
-      
+
       return res.status(201).json({
         success: true,
         message: "Registration successful! Email service is slow. Please use resend OTP.",
-        data: { 
+        data: {
           userId: newUser[0].id,
           email: newUser[0].email,
           name: newUser[0].name,
@@ -273,9 +273,9 @@ export const resendOTP = async (req, res) => {
       });
     } catch (emailError) {
       logger.error(`Failed to resend OTP email: ${email}`);
-      return res.status(500).json({ 
-        success: false, 
-        message: "Failed to send OTP email. Please try again." 
+      return res.status(500).json({
+        success: false,
+        message: "Failed to send OTP email. Please try again."
       });
     }
   } catch (error) {
@@ -313,8 +313,8 @@ export const login = async (req, res) => {
     // Check if user is verified
     if (!user.isVerified) {
       logger.warn(`Login attempt for unverified user: ${identifier}`);
-      return res.status(403).json({ 
-        success: false, 
+      return res.status(403).json({
+        success: false,
         message: "Please verify your email before logging in",
         requiresVerification: true,
         email: user.email,
@@ -347,7 +347,10 @@ export const login = async (req, res) => {
           email: user.email,
           mobile: user.mobile,
           panCard: user.panCard,
+          aadhaarNumber: user.aadhaarNumber,
           isVerified: user.isVerified,
+          hasSetPin: user.hasSetPin || false,
+          lastPinChange: user.lastPinChange || null,
         },
         token,
       },
@@ -372,6 +375,8 @@ export const getProfile = async (req, res) => {
         panCard: users.panCard,
         aadhaarNumber: users.aadhaarNumber,
         isVerified: users.isVerified,
+        hasSetPin: users.hasSetPin,
+        lastPinChange: users.lastPinChange,
         createdAt: users.createdAt,
       })
       .from(users)

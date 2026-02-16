@@ -2,6 +2,7 @@ import { eq, or, desc, sql, inArray } from "drizzle-orm";
 import db from "../config/db.js";
 import { users, transactions } from "../models/schema.js";
 import logger from "../utils/logger.js";
+import bcrypt from "bcryptjs";
 import { sendTransactionEmail } from "../utils/emailService.js";
 
 // Generate unique transaction ID
@@ -75,6 +76,19 @@ export const sendMoney = async (req, res) => {
 
     const sender = senderResult[0];
     const senderBalance = parseFloat(sender.walletBalance || 0);
+
+    // ── Verify Transaction PIN ──────────────────────────
+    const { transactionPin } = req.body;
+    if (!sender.hasSetPin) {
+      return res.status(400).json({ success: false, message: "Please set your Transaction PIN in Profile before making payments." });
+    }
+    if (!transactionPin) {
+      return res.status(400).json({ success: false, message: "Transaction PIN is required" });
+    }
+    const isPinValid = await bcrypt.compare(transactionPin, sender.transactionPin);
+    if (!isPinValid) {
+      return res.status(400).json({ success: false, message: "Incorrect Transaction PIN" });
+    }
 
     // Check sender balance
     if (senderBalance < amountNum) {
@@ -220,7 +234,7 @@ export const getTransactionHistory = async (req, res) => {
     });
 
     const userIdsArray = Array.from(userIds);
-    
+
     let userDetails = [];
     if (userIdsArray.length > 0) {
       userDetails = await db

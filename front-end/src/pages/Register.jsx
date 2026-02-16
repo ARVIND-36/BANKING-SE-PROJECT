@@ -56,19 +56,19 @@ const Register = () => {
       const { confirmPassword, ...payload } = form;
       const res = await api.post("/auth/register", payload);
       toast.success(res.data.message);
-      
+
       // Log OTP in development mode for easier testing
       if (res.data.data.otp) {
-        console.log("🔐 Development Mode - Your OTP is:", res.data.data.otp);
-        toast.success(`OTP: ${res.data.data.otp} (Check console)`, { duration: 10000 });
+
+        toast.success(`OTP sent to email`, { duration: 5000 });
       }
-      
+
       // Navigate to OTP verification page with email and name
-      navigate("/verify-otp", { 
-        state: { 
+      navigate("/verify-otp", {
+        state: {
           email: res.data.data.email,
           name: res.data.data.name
-        } 
+        }
       });
     } catch (err) {
       const errorMsg = err.response?.data?.message || err.message || "Registration failed";
@@ -83,9 +83,9 @@ const Register = () => {
     <div className="auth-container">
       <div className="auth-card auth-card-wide">
         <div className="auth-header">
-          <img 
-            src="/assets/nidhi-logo.png" 
-            alt="NIDHI Logo" 
+          <img
+            src="/assets/nidhi-logo.png"
+            alt="NIDHI Logo"
             className="auth-logo-img"
             onError={(e) => {
               e.target.style.display = 'none';

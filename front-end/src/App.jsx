@@ -12,6 +12,9 @@ import Loans from "./pages/Loans";
 import Pay from "./pages/Pay";
 import ScanPay from "./pages/ScanPay";
 import Transactions from "./pages/Transactions";
+import MerchantDashboard from "./pages/MerchantDashboard";
+import HostedCheckout from "./pages/HostedCheckout";
+import Profile from "./pages/Profile";
 import "./App.css";
 
 // Redirect to /home if already logged in
@@ -34,6 +37,9 @@ function App() {
           <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
           <Route path="/verify-otp" element={<VerifyOTP />} />
 
+          {/* Public Checkout Route */}
+          <Route path="/pay/checkout/:orderId" element={<HostedCheckout />} />
+
           {/* Protected routes with bottom nav layout */}
           <Route
             element={
@@ -47,6 +53,8 @@ function App() {
             <Route path="/pay" element={<Pay />} />
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/scan" element={<ScanPay />} />
+            <Route path="/merchant" element={<MerchantDashboard />} />
+            <Route path="/profile" element={<Profile />} /> {/* Added Profile route */}
           </Route>
         </Routes>
       </BrowserRouter>

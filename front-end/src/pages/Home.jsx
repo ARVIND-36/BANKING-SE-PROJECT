@@ -12,6 +12,7 @@ const Home = () => {
   const [recentTransactions, setRecentTransactions] = useState([]);
   const [recentPeople, setRecentPeople] = useState([]);
   const [showBalance, setShowBalance] = useState(false);
+  const [merchantProfile, setMerchantProfile] = useState(null);
 
   const fetchWalletData = async () => {
     try {
@@ -53,12 +54,22 @@ const Home = () => {
     }
   };
 
+  const fetchMerchantProfile = async () => {
+    try {
+      const res = await api.get("/merchants/profile");
+      setMerchantProfile(res.data.data);
+    } catch (err) {
+      console.error("Failed to fetch merchant profile", err);
+    }
+  };
+
   useEffect(() => {
     const loadData = async () => {
       await Promise.all([
         fetchWalletData(),
         fetchRecentTransactions(),
         fetchRecentPeople(),
+        fetchMerchantProfile(),
       ]);
     };
     loadData();
@@ -151,11 +162,19 @@ const Home = () => {
           </div>
           <span className="qa-label">Scan</span>
         </button>
-        <button className="quick-action-btn" onClick={() => toast("Bank transfer coming soon", { icon: "🏦" })}>
+        {merchantProfile && (
+          <button className="quick-action-btn" onClick={() => navigate("/merchant")}>
+            <div className="qa-icon-circle">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
+            </div>
+            <span className="qa-label">Merchant</span>
+          </button>
+        )}
+        <button className="quick-action-btn" onClick={() => navigate("/loans")}>
           <div className="qa-icon-circle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18" /><path d="M9 21V9" /></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
           </div>
-          <span className="qa-label">Bank</span>
+          <span className="qa-label">Loans</span>
         </button>
         <button className="quick-action-btn" onClick={() => navigate("/transactions")}>
           <div className="qa-icon-circle">

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "/api",
+  baseURL: import.meta.env.VITE_API_URL || "/api",
   headers: { "Content-Type": "application/json" },
   timeout: 30000, // 30 second timeout
 });
@@ -15,11 +15,11 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Handle 401/403 globally
+// Handle 401 globally (only true auth failures)
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401 || error.response?.status === 403) {
+    if (error.response?.status === 401) {
       localStorage.removeItem("nidhi_token");
       localStorage.removeItem("nidhi_user");
       window.location.href = "/login";

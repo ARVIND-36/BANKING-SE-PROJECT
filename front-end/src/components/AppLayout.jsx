@@ -33,7 +33,7 @@ const AppLayout = () => {
           </span>
         </div>
         <div className="app-header-right">
-          <button className="header-profile-btn" onClick={() => navigate("/home")}>
+          <button className="header-profile-btn" onClick={() => navigate("/profile")}>
             <span className="header-avatar">
               {user?.name?.[0]?.toUpperCase() || "U"}
             </span>
@@ -64,9 +64,8 @@ const AppLayout = () => {
             <span>Pay</span>
           </NavLink>
           <NavLink to="/loans" className={({ isActive }) => `bottom-nav-item ${isActive ? "active" : ""}`}>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="5" width="20" height="14" rx="2" />
-              <line x1="2" y1="10" x2="22" y2="10" />
+            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span>Loans</span>
           </NavLink>
