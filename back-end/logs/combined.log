@@ -2368,3 +2368,13 @@ params: 4
 [2026-02-16 22:10:01] info: Configured CORS origins: ["http://localhost:5173","https://nidhistatic1771217837.z29.web.core.windows.net","https://nidhistatic1771217837.z29.web.core.windows.net/"]
 [2026-02-16 22:10:01] info: Environment: NODE_ENV=development, PORT=5000
 [2026-02-16 22:10:01] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 22:13:48] info: Database connection established with Neon PostgreSQL
+[2026-02-16 22:13:48] info: Database connection established with Neon PostgreSQL
+[2026-02-16 22:13:50] info: Database connection established with Neon PostgreSQL
+[2026-02-16 22:13:50] info: Configured CORS origins: ["http://localhost:5173","https://nidhistatic1771217837.z29.web.core.windows.net","https://nidhistatic1771217837.z29.web.core.windows.net/"]
+[2026-02-16 22:13:50] info: Environment: NODE_ENV=development, PORT=5000
+[2026-02-16 22:13:50] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 22:13:50] info: Database connection established with Neon PostgreSQL
+[2026-02-16 22:13:50] info: Configured CORS origins: ["http://localhost:5173","https://nidhistatic1771217837.z29.web.core.windows.net","https://nidhistatic1771217837.z29.web.core.windows.net/"]
+[2026-02-16 22:13:50] info: Environment: NODE_ENV=development, PORT=5000
+[2026-02-16 22:13:50] info: 🚀 NIDHI server running on http://localhost:5000

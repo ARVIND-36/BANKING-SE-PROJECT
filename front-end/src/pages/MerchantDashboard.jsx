@@ -10,6 +10,26 @@ const MerchantDashboard = () => {
     const [keys, setKeys] = useState([]);
     const [loading, setLoading] = useState(true);
     const [newKey, setNewKey] = useState(null); // To show secret key once
+    const [settling, setSettling] = useState(false); // Settlement in progress
+
+    const doSettlement = async () => {
+        if (!window.confirm("Run settlement now? This will move pending balance to available balance and send a settlement email.")) return;
+        setSettling(true);
+        try {
+            const res = await api.post("/merchants/settle");
+            const data = res.data;
+            if (data.success) {
+                toast.success(`Settlement done! ${data.count} merchant(s) settled.`);
+                fetchData(); // Refresh balances
+            } else {
+                toast.error(data.message || "Settlement failed");
+            }
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Settlement failed");
+        } finally {
+            setSettling(false);
+        }
+    };
 
     useEffect(() => {
         fetchData();
@@ -66,7 +86,7 @@ const MerchantDashboard = () => {
                 <button
                     onClick={async () => {
                         const name = prompt("Enter Business Name:");
-                            if (name) {
+                        if (name) {
                             try {
                                 await api.post("/merchants/register", { businessName: name });
                                 toast.success("Welcome aboard!");
@@ -105,6 +125,26 @@ const MerchantDashboard = () => {
                         <span className="hb-amount" style={{ fontSize: "1.2rem", color: "var(--text-muted)" }}>
                             ₹{profile.pendingBalance}
                         </span>
+                        {parseFloat(profile.pendingBalance) > 0 && (
+                            <button
+                                onClick={doSettlement}
+                                disabled={settling}
+                                style={{
+                                    marginTop: "0.5rem",
+                                    padding: "6px 16px",
+                                    fontSize: "0.8rem",
+                                    fontWeight: "600",
+                                    background: settling ? "#9ca3af" : "linear-gradient(135deg, #f59e0b, #d97706)",
+                                    color: "#fff",
+                                    border: "none",
+                                    borderRadius: "8px",
+                                    cursor: settling ? "not-allowed" : "pointer",
+                                    transition: "all 0.2s",
+                                }}
+                            >
+                                {settling ? "Settling..." : "⚡ Do Settlement"}
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>

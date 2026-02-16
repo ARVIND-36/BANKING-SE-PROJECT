@@ -111,6 +111,24 @@ app.use("/api/pin", pinRoutes);
 import gatewayRoutes from "./src/routes/gateway.routes.js";
 app.use("/api/v1", gatewayRoutes); // Developer API Version 1
 
+// ─── CRON: Daily Settlement at 9 PM IST ─────────────────────
+import cron from "node-cron";
+import { runSettlement } from "./src/services/settlementService.js";
+
+cron.schedule("0 21 * * *", async () => {
+  logger.info("⏰ [CRON] Running daily 9 PM settlement...");
+  try {
+    const report = await runSettlement();
+    logger.info(`⏰ [CRON] Settlement completed: ${report.length} merchants settled.`);
+  } catch (err) {
+    logger.error(`⏰ [CRON] Settlement failed: ${err.message}`);
+  }
+}, {
+  timezone: "Asia/Kolkata",
+});
+
+logger.info("⏰ Daily settlement cron registered — runs at 21:00 IST");
+
 // Health check
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", project: "NIDHI", timestamp: new Date().toISOString() });
