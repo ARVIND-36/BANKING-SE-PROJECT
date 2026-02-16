@@ -30,7 +30,25 @@ const PORT = process.env.PORT || 5000;
 // ─── Middleware ──────────────────────────────────────────────
 // Configure CORS origins via environment variable `ALLOWED_ORIGINS`
 // Example: ALLOWED_ORIGINS="http://localhost:5173,https://your-static-site"
-const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://localhost:5173").split(",").map(s => s.trim()).filter(Boolean);
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://nidhistatic1771217837.z29.web.core.windows.net",
+  ...(process.env.ALLOWED_ORIGINS || "").split(","),
+].map((s) => s.trim()).filter(Boolean);
+
+// Startup Check: Validate critical environment variables
+const requiredEnvVars = ["NEON_URL", "JWT_SECRET"];
+const missingEnvVars = requiredEnvVars.filter((key) => !process.env[key]);
+
+if (missingEnvVars.length > 0) {
+  logger.error(
+    `CRITICAL: Missing required environment variables: ${missingEnvVars.join(
+      ", "
+    )}`
+  );
+  logger.error("Server cannot start without these variables.");
+  process.exit(1);
+}
 
 // Restricted CORS – only your own front-ends (auth, wallet, dashboard, etc.)
 const restrictedCors = cors({
@@ -45,11 +63,17 @@ const restrictedCors = cors({
 // Open CORS – any third-party / developer app can call the payment gateway API
 const openCors = cors();
 
-// IMPORTANT: Register open CORS for /api/v1 BEFORE the restricted global CORS
-// Express processes middleware in order, so this must come first
+// IMPORTANT: Apply CORS selectively - open for /api/v1, restricted for others
+// Express processes middleware in order, so route-specific CORS comes first
 app.use("/api/v1", openCors);
-// Apply restricted CORS for all other routes
-app.use(restrictedCors);
+
+// For non-gateway routes, apply restricted CORS
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api/v1')) {
+    return next(); // Skip restrictedCors for /api/v1 routes
+  }
+  restrictedCors(req, res, next);
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
