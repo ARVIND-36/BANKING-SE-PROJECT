@@ -71,7 +71,8 @@ export const getOrderDetails = async (req, res) => {
                 currency: order[0].currency,
                 description: order[0].description,
                 status: order[0].status,
-                merchantId: order[0].merchantId
+                merchantId: order[0].merchantId,
+                returnUrl: order[0].returnUrl
             }
         });
     } catch (error) {
