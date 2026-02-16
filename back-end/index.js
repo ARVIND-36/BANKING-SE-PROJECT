@@ -33,8 +33,12 @@ const PORT = process.env.PORT || 5000;
 const allowedOrigins = [
   "http://localhost:5173",
   "https://nidhistatic1771217837.z29.web.core.windows.net",
+  "https://nidhistatic1771217837.z29.web.core.windows.net/",
   ...(process.env.ALLOWED_ORIGINS || "").split(","),
 ].map((s) => s.trim()).filter(Boolean);
+
+logger.info(`Configured CORS origins: ${JSON.stringify(allowedOrigins)}`);
+logger.info(`Environment: NODE_ENV=${process.env.NODE_ENV}, PORT=${PORT}`);
 
 // Startup Check: Validate critical environment variables
 const requiredEnvVars = ["NEON_URL", "JWT_SECRET"];
@@ -55,13 +59,23 @@ const restrictedCors = cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true); // allow non-browser or same-origin requests
     if (allowedOrigins.includes(origin)) return callback(null, true);
+    logger.warn(`CORS origin not allowed: ${origin}`);
     return callback(new Error('CORS policy: origin not allowed'), false);
   },
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  preflightContinue: false,
+  optionsSuccessStatus: 200
 });
 
 // Open CORS – any third-party / developer app can call the payment gateway API
-const openCors = cors();
+const openCors = cors({
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  preflightContinue: false,
+  optionsSuccessStatus: 200
+});
 
 // IMPORTANT: Apply CORS selectively - open for /api/v1, restricted for others
 // Express processes middleware in order, so route-specific CORS comes first

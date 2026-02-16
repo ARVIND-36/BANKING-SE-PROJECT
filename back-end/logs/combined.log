@@ -2187,3 +2187,184 @@ params: 4
 [2026-02-16 17:32:06] info: ::ffff:127.0.0.1 - - [16/Feb/2026:12:02:06 +0000] "GET /api/merchants/webhooks/events HTTP/1.1" 304 - "http://localhost:5173/merchant" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
 [2026-02-16 17:37:12] info: Database connection established with Neon PostgreSQL
 [2026-02-16 17:37:12] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:48:47] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:48:48] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:48:48] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:48:48] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 20:48:48] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:48:48] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 20:50:06] info: ::1 - - [16/Feb/2026:15:20:06 +0000] "GET /api/health HTTP/1.1" 200 72 "-" "curl/8.5.0"
+[2026-02-16 20:50:12] info: ::1 - - [16/Feb/2026:15:20:12 +0000] "GET /api/health HTTP/1.1" 200 72 "-" "curl/8.5.0"
+[2026-02-16 20:50:19] info: ::1 - pk_test_merchant123 [16/Feb/2026:15:20:19 +0000] "POST /api/v1/orders HTTP/1.1" 401 57 "-" "curl/8.5.0"
+[2026-02-16 20:51:25] error: Unhandled error: CORS policy: origin not allowed
+[2026-02-16 20:52:23] error: Unhandled error: CORS policy: origin not allowed
+[2026-02-16 20:52:26] error: Unhandled error: CORS policy: origin not allowed
+[2026-02-16 20:52:38] error: Unhandled error: CORS policy: origin not allowed
+[2026-02-16 20:53:34] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:53:34] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:53:34] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 20:54:02] info: ::1 - - [16/Feb/2026:15:24:02 +0000] "GET / HTTP/1.1" 404 45 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 20:54:02] info: ::1 - - [16/Feb/2026:15:24:02 +0000] "GET /favicon.ico HTTP/1.1" 404 45 "http://localhost:5000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 20:54:08] info: Order created: ord_e63f9baa2019baa4f62488c6 for Merchant 3
+[2026-02-16 20:54:08] info: ::1 - pk_live_75875775336243a679a0b6ab942a0cb904debe0c5d575232 [16/Feb/2026:15:24:08 +0000] "POST /api/v1/orders HTTP/1.1" 201 228 "http://localhost:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 20:55:45] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:55:45] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:55:45] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 20:55:51] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:55:52] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:55:52] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 20:56:05] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:56:06] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:56:06] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 20:56:07] info: ::1 - - [16/Feb/2026:15:26:07 +0000] "GET / HTTP/1.1" 404 45 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 20:56:12] info: ::1 - - [16/Feb/2026:15:26:12 +0000] "GET /health HTTP/1.1" 404 45 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 20:56:18] info: ::1 - - [16/Feb/2026:15:26:18 +0000] "GET /api/health HTTP/1.1" 200 72 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 20:56:28] info: Order created: ord_f5859db69da89f7aae3ef053 for Merchant 3
+[2026-02-16 20:56:28] info: ::1 - pk_live_75875775336243a679a0b6ab942a0cb904debe0c5d575232 [16/Feb/2026:15:26:28 +0000] "POST /api/v1/orders HTTP/1.1" 201 228 "http://localhost:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 20:57:57] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:57:58] info: Database connection established with Neon PostgreSQL
+[2026-02-16 20:57:58] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 20:58:06] info: Order created: ord_8ee650f5c245336a154ba7e1 for Merchant 3
+[2026-02-16 20:58:06] info: ::1 - pk_live_75875775336243a679a0b6ab942a0cb904debe0c5d575232 [16/Feb/2026:15:28:06 +0000] "POST /api/v1/orders HTTP/1.1" 201 228 "http://localhost:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 20:58:07] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:28:07 +0000] "GET /api/v1/orders/ord_8ee650f5c245336a154ba7e1 HTTP/1.1" 200 260 "http://localhost:5173/pay/checkout/ord_8ee650f5c245336a154ba7e1" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 20:58:07] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:28:07 +0000] "GET /api/v1/orders/ord_8ee650f5c245336a154ba7e1 HTTP/1.1" 304 - "http://localhost:5173/pay/checkout/ord_8ee650f5c245336a154ba7e1" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 20:58:21] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:28:21 +0000] "POST /api/pin/verify HTTP/1.1" 200 41 "http://localhost:5173/pay/checkout/ord_8ee650f5c245336a154ba7e1" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 20:58:21] error: Payment execution error: No transactions support in neon-http driver
+[2026-02-16 20:58:21] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:28:21 +0000] "POST /api/v1/pay HTTP/1.1" 400 73 "http://localhost:5173/pay/checkout/ord_8ee650f5c245336a154ba7e1" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:01:46] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:31:46 +0000] "GET /api/wallet/balance HTTP/1.1" 200 93 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:01:46] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:31:46 +0000] "GET /api/merchants/profile HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:01:46] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:31:46 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:01:46] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:31:46 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 200 2589 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:01:46] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:31:46 +0000] "GET /api/merchants/profile HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:01:46] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:31:46 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:01:46] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:31:46 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 200 981 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:01:46] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:31:46 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:01:46] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:31:46 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:01] info: User logged in: pnarvind06@gmail.com
+[2026-02-16 21:02:01] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:32:01 +0000] "POST /api/auth/login HTTP/1.1" 200 465 "http://localhost:5173/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:01] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:32:01 +0000] "GET /api/wallet/balance HTTP/1.1" 200 91 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:01] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:32:01 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:01] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:32:01 +0000] "GET /api/merchants/profile HTTP/1.1" 200 28 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:01] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:32:01 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 200 1000 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:01] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:32:01 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 200 3330 "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:01] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:32:01 +0000] "GET /api/merchants/profile HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:01] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:32:01 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:01] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:32:01 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:02] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:32:02 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:26] info: Order created: ord_2e7ddd29c0bec47116e4af5c for Merchant 3
+[2026-02-16 21:02:26] info: ::1 - pk_live_75875775336243a679a0b6ab942a0cb904debe0c5d575232 [16/Feb/2026:15:32:26 +0000] "POST /api/v1/orders HTTP/1.1" 201 228 "http://localhost:8080/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:26] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:32:26 +0000] "GET /api/v1/orders/ord_2e7ddd29c0bec47116e4af5c HTTP/1.1" 200 260 "http://localhost:5173/pay/checkout/ord_2e7ddd29c0bec47116e4af5c" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:26] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:32:26 +0000] "GET /api/v1/orders/ord_2e7ddd29c0bec47116e4af5c HTTP/1.1" 304 - "http://localhost:5173/pay/checkout/ord_2e7ddd29c0bec47116e4af5c" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:35] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:32:35 +0000] "POST /api/pin/verify HTTP/1.1" 200 41 "http://localhost:5173/pay/checkout/ord_2e7ddd29c0bec47116e4af5c" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:02:35] error: Payment execution error: No transactions support in neon-http driver
+[2026-02-16 21:02:35] info: ::ffff:127.0.0.1 - - [16/Feb/2026:15:32:35 +0000] "POST /api/v1/pay HTTP/1.1" 400 73 "http://localhost:5173/pay/checkout/ord_2e7ddd29c0bec47116e4af5c" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:15:38] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:15:38] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:15:39] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:15:39] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:15:39] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:15:39] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:16:32] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:16:32] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:16:32] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:16:32] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:16:32] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:16:32] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:16:47] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:16:47] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:16:47] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:16:47] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:16:47] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:16:47] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:17:13] info: ::1 - - [16/Feb/2026:15:47:13 +0000] "GET /api/health HTTP/1.1" 200 72 "-" "curl/8.5.0"
+[2026-02-16 21:18:31] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:18:32] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:18:32] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:18:57] info: ::1 - wrong [16/Feb/2026:15:48:57 +0000] "POST /api/v1/orders HTTP/1.1" 401 57 "-" "curl/8.5.0"
+[2026-02-16 21:20:08] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:20:08] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:20:08] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:20:08] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:20:08] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:20:08] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:20:09] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:20:09] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:20:10] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:20:10] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:20:10] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:20:10] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:20:11] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:20:18] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:21:08] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:21:08] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:21:08] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:21:08] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:21:08] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:21:08] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:21:14] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:21:14] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:21:15] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:21:15] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:21:15] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:21:15] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:21:17] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:28:00] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:28:00] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:28:02] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:28:02] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:28:02] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:28:02] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:33:00] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:33:01] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:33:01] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:33:12] info: ::ffff:127.0.0.1 - - [16/Feb/2026:16:03:12 +0000] "GET /api/v1/orders/ord_2e7ddd29c0bec47116e4af5c HTTP/1.1" 304 - "http://localhost:5173/pay/checkout/ord_2e7ddd29c0bec47116e4af5c" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:33:12] info: ::ffff:127.0.0.1 - - [16/Feb/2026:16:03:12 +0000] "GET /api/v1/orders/ord_2e7ddd29c0bec47116e4af5c HTTP/1.1" 304 - "http://localhost:5173/pay/checkout/ord_2e7ddd29c0bec47116e4af5c" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:33:17] info: ::ffff:127.0.0.1 - - [16/Feb/2026:16:03:17 +0000] "POST /api/pin/verify HTTP/1.1" 200 41 "http://localhost:5173/pay/checkout/ord_2e7ddd29c0bec47116e4af5c" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:33:17] error: Payment execution error: No transactions support in neon-http driver
+[2026-02-16 21:33:17] info: ::ffff:127.0.0.1 - - [16/Feb/2026:16:03:17 +0000] "POST /api/v1/pay HTTP/1.1" 400 73 "http://localhost:5173/pay/checkout/ord_2e7ddd29c0bec47116e4af5c" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 21:40:25] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:40:25] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:40:26] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:40:26] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:40:26] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:40:26] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:43:02] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:43:02] info: Skipping DB connectivity check (SKIP_DB_CHECK=true).
+[2026-02-16 21:43:02] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:44:22] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:44:22] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:44:23] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:44:23] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:44:23] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:44:23] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:44:33] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:45:17] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:45:17] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:45:18] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:45:18] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 21:45:18] info: Database connection established with Neon PostgreSQL
+[2026-02-16 21:45:18] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 22:01:07] info: ::ffff:127.0.0.1 - - [16/Feb/2026:16:31:07 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 22:01:07] info: ::ffff:127.0.0.1 - - [16/Feb/2026:16:31:07 +0000] "GET /api/merchants/profile HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 22:01:07] info: ::ffff:127.0.0.1 - - [16/Feb/2026:16:31:07 +0000] "GET /api/wallet/balance HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 22:01:07] info: ::ffff:127.0.0.1 - - [16/Feb/2026:16:31:07 +0000] "GET /api/merchants/profile HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 22:01:07] info: ::ffff:127.0.0.1 - - [16/Feb/2026:16:31:07 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 22:01:07] info: ::ffff:127.0.0.1 - - [16/Feb/2026:16:31:07 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 22:01:07] info: ::ffff:127.0.0.1 - - [16/Feb/2026:16:31:07 +0000] "GET /api/wallet/transactions?limit=4 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 22:01:07] info: ::ffff:127.0.0.1 - - [16/Feb/2026:16:31:07 +0000] "GET /api/wallet/transactions?limit=20 HTTP/1.1" 304 - "http://localhost:5173/home" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+[2026-02-16 22:09:48] info: Database connection established with Neon PostgreSQL
+[2026-02-16 22:09:48] info: Database connection established with Neon PostgreSQL
+[2026-02-16 22:09:49] info: Database connection established with Neon PostgreSQL
+[2026-02-16 22:09:49] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 22:09:49] info: Database connection established with Neon PostgreSQL
+[2026-02-16 22:09:49] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 22:10:01] info: Database connection established with Neon PostgreSQL
+[2026-02-16 22:10:01] info: Database connection established with Neon PostgreSQL
+[2026-02-16 22:10:01] info: Database connection established with Neon PostgreSQL
+[2026-02-16 22:10:01] info: Configured CORS origins: ["http://localhost:5173","https://nidhistatic1771217837.z29.web.core.windows.net","https://nidhistatic1771217837.z29.web.core.windows.net/"]
+[2026-02-16 22:10:01] info: Environment: NODE_ENV=development, PORT=5000
+[2026-02-16 22:10:01] info: 🚀 NIDHI server running on http://localhost:5000
+[2026-02-16 22:10:01] info: Database connection established with Neon PostgreSQL
+[2026-02-16 22:10:01] info: Configured CORS origins: ["http://localhost:5173","https://nidhistatic1771217837.z29.web.core.windows.net","https://nidhistatic1771217837.z29.web.core.windows.net/"]
+[2026-02-16 22:10:01] info: Environment: NODE_ENV=development, PORT=5000
+[2026-02-16 22:10:01] info: 🚀 NIDHI server running on http://localhost:5000

@@ -35,3 +35,4 @@ npm-debug.log*
 .turbo/
 
 bus-booking-test
+back-end/scripts

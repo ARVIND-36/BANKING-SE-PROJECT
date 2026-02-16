@@ -488,3 +488,10 @@ params: 4
 params: 4
 [2026-02-16 16:01:19] error: Get merchant profile error: Failed query: select "merchants"."id", "merchants"."business_name", "merchants"."business_type", "merchants"."business_category", "merchants"."business_description", "merchants"."business_website", "merchants"."gst_number", "merchants"."business_pan", "merchants"."registration_number", "merchants"."address_street", "merchants"."address_city", "merchants"."address_state", "merchants"."address_pin_code", "merchants"."bank_account_name", "merchants"."bank_name", "merchants"."account_number", "merchants"."ifsc_code", "merchants"."account_type", "merchants"."business_email", "merchants"."business_phone", "merchants"."support_email", "merchants"."support_phone", "merchants"."available_balance", "merchants"."pending_balance", "merchants"."status", "merchants"."kyb_status", "merchants"."kyb_verified_at", "merchants"."created_at", "users"."name", "users"."email" from "merchants" inner join "users" on "merchants"."user_id" = "users"."id" where "merchants"."user_id" = $1
 params: 4
+[2026-02-16 20:51:25] error: Unhandled error: CORS policy: origin not allowed
+[2026-02-16 20:52:23] error: Unhandled error: CORS policy: origin not allowed
+[2026-02-16 20:52:26] error: Unhandled error: CORS policy: origin not allowed
+[2026-02-16 20:52:38] error: Unhandled error: CORS policy: origin not allowed
+[2026-02-16 20:58:21] error: Payment execution error: No transactions support in neon-http driver
+[2026-02-16 21:02:35] error: Payment execution error: No transactions support in neon-http driver
+[2026-02-16 21:33:17] error: Payment execution error: No transactions support in neon-http driver
