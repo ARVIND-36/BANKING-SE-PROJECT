@@ -24,7 +24,7 @@ const MerchantDashboard = () => {
             setProfile(profileRes.data.data);
             setKeys(keysRes.data.data);
         } catch (error) {
-            console.error(error);
+            console.error("Merchant fetch error:", error);
             // If 404, user is not a merchant yet, redirect or show register button
         } finally {
             setLoading(false);
@@ -49,6 +49,7 @@ const MerchantDashboard = () => {
             toast.success("Key revoked");
             fetchData();
         } catch (error) {
+            console.error("Revoke key error:", error);
             toast.error("Failed to revoke key");
         }
     };
@@ -65,12 +66,12 @@ const MerchantDashboard = () => {
                 <button
                     onClick={async () => {
                         const name = prompt("Enter Business Name:");
-                        if (name) {
+                            if (name) {
                             try {
                                 await api.post("/merchants/register", { businessName: name });
                                 toast.success("Welcome aboard!");
                                 window.location.reload();
-                            } catch (e) { toast.error("Failed to register"); }
+                            } catch (err) { console.error("Merchant register error:", err); toast.error("Failed to register"); }
                         }
                     }}
                     className="btn-primary"

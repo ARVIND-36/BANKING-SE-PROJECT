@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/useAuth";
 import api from "../services/api";
-import toast from "react-hot-toast";
+// toast not used here
 
 const Home = () => {
   const { user } = useAuth();

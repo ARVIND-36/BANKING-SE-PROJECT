@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../services/api";
 import { toast } from "react-hot-toast";
@@ -12,21 +12,24 @@ const HostedCheckout = () => {
     const [loading, setLoading] = useState(true);
     const [showPinModal, setShowPinModal] = useState(false);
     const [pin, setPin] = useState("");
+    const [processing, setProcessing] = useState(false);
+    const [error, setError] = useState(null);
 
-    useEffect(() => {
-        fetchOrder();
-    }, [orderId]);
-
-    const fetchOrder = async () => {
+    const fetchOrder = useCallback(async () => {
         try {
             const res = await api.get(`/v1/orders/${orderId}`);
             setOrder(res.data.data);
         } catch (err) {
+            console.error("Fetch order error:", err);
             setError("Invalid or expired payment link.");
         } finally {
             setLoading(false);
         }
-    };
+    }, [orderId]);
+
+    useEffect(() => {
+        fetchOrder();
+    }, [fetchOrder]);
 
     const initiatePayment = () => {
         if (!user) {
@@ -64,7 +67,9 @@ const HostedCheckout = () => {
                 setTimeout(() => navigate("/transactions"), 1500);
             }
         } catch (err) {
+            console.error("Payment error:", err);
             toast.error(err.response?.data?.message || "Payment failed");
+        } finally {
             setProcessing(false);
         }
     };

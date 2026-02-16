@@ -34,6 +34,7 @@ const WebhooksPanel = () => {
             setUrl("");
             fetchData();
         } catch (err) {
+            console.error("Add webhook error:", err);
             toast.error("Failed to add webhook");
         } finally {
             setLoading(false);
@@ -46,7 +47,10 @@ const WebhooksPanel = () => {
             await api.post("/merchants/webhooks/delete", { id });
             fetchData();
             toast.success("Webhook removed");
-        } catch (err) { toast.error("Failed to remove"); }
+        } catch (err) {
+            console.error("Delete webhook error:", err);
+            toast.error("Failed to remove");
+        }
     };
 
     return (

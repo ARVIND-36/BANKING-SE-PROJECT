@@ -38,7 +38,7 @@ const Profile = () => {
     };
 
     const handlePinModalOpen = () => {
-        setPinCheckStep(1); // Reset step
+        // reset internal PIN flow state
         setPinData({ otp: "", pin: "", confirmPin: "" });
         setShowPinModal(true);
     };
@@ -79,7 +79,7 @@ const Profile = () => {
         }
     };
 
-    const [pinCheckStep, setPinCheckStep] = useState(1); // 1: Enter PINs, 2: OTP Sent
+    // pinCheckStep removed (unused)
 
     if (!user) return <div className="loading-container"><div className="spinner"></div></div>;
 
