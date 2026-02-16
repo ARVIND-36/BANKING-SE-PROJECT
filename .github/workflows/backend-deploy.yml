@@ -69,9 +69,15 @@ jobs:
         run: |
           rm -rf .env .env.* test/ logs/ *.log
 
+      - name: Create deployment package
+        run: |
+          cd ${{ github.workspace }}
+          zip -r deploy.zip back-end/ -x "back-end/.env*" "back-end/test/*" "back-end/logs/*" "back-end/node_modules/*"
+        working-directory: ${{ github.workspace }}
+
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ secrets.AZURE_BACKEND_APP_NAME }}
           publish-profile: ${{ secrets.AZURE_BACKEND_PUBLISH_PROFILE }}
-          package: back-end
+          package: back-end/
