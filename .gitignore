@@ -7,6 +7,9 @@ back-end/logs/
 back-end/dist/
 back-end/Logs
 back-end/drizzle
+back-end/query_m.mjs
+back-end/query_neon.mjs
+back-end/query_merchants.mjs
 
 # Frontend
 front-end/node_modules/

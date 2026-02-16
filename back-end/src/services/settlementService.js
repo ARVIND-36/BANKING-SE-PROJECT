@@ -161,6 +161,16 @@ export const runSettlement = async () => {
                 })
                 .where(eq(merchants.id, merchant.id));
 
+            // 3b. Credit the settled amount to the merchant owner's user wallet
+            await db
+                .update(users)
+                .set({
+                    walletBalance: sql`${users.walletBalance} + ${amountToSettle}`
+                })
+                .where(eq(users.id, merchant.userId));
+
+            logger.info(`💰 Credited ₹${amountToSettle} to user wallet (userId: ${merchant.userId}) for merchant ${merchant.businessName}`);
+
             // 4. Create Settlement Record
             await db.insert(settlements).values({
                 merchantId: merchant.id,
