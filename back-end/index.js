@@ -31,16 +31,25 @@ const PORT = process.env.PORT || 5000;
 // Configure CORS origins via environment variable `ALLOWED_ORIGINS`
 // Example: ALLOWED_ORIGINS="http://localhost:5173,https://your-static-site"
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || "http://localhost:5173").split(",").map(s => s.trim()).filter(Boolean);
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true); // allow non-browser or same-origin requests
-      if (allowedOrigins.includes(origin)) return callback(null, true);
-      return callback(new Error('CORS policy: origin not allowed'), false);
-    },
-    credentials: true,
-  })
-);
+
+// Restricted CORS – only your own front-ends (auth, wallet, dashboard, etc.)
+const restrictedCors = cors({
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true); // allow non-browser or same-origin requests
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error('CORS policy: origin not allowed'), false);
+  },
+  credentials: true,
+});
+
+// Open CORS – any third-party / developer app can call the payment gateway API
+const openCors = cors();
+
+// Apply restricted CORS by default for all routes
+app.use(restrictedCors);
+// Override with open CORS for the public developer gateway API (/api/v1)
+app.use("/api/v1", openCors);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
