@@ -14,20 +14,18 @@ on:
     branches: [main]
     paths:
       - "back-end/**"
-  workflow_dispatch: # Allow manual trigger from GitHub UI
-
-defaults:
-  run:
-    working-directory: back-end
+  workflow_dispatch:
 
 jobs:
-  # ─── TEST & LINT ────────────────────────────────────────────
+  # ─── TEST ───────────────────────────────────────────────────
   test:
-    name: Test & Lint
+    name: Test
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: back-end
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -44,7 +42,7 @@ jobs:
         env:
           NODE_ENV: test
 
-  # ─── BUILD & DEPLOY ────────────────────────────────────────
+  # ─── DEPLOY ─────────────────────────────────────────────────
   deploy:
     name: Deploy to Azure
     needs: test
@@ -52,8 +50,7 @@ jobs:
     if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -63,21 +60,26 @@ jobs:
           cache-dependency-path: back-end/package-lock.json
 
       - name: Install production dependencies
+        working-directory: back-end
         run: npm ci --omit=dev
 
-      - name: Remove unnecessary files
-        run: |
-          rm -rf .env .env.* test/ logs/ *.log
+      - name: Clean up non-production files
+        working-directory: back-end
+        run: rm -rf .env .env.* test/ logs/ *.log .gitignore
 
-      - name: Create deployment package
-        run: |
-          cd ${{ github.workspace }}
-          zip -r deploy.zip back-end/ -x "back-end/.env*" "back-end/test/*" "back-end/logs/*" "back-end/node_modules/*"
-        working-directory: ${{ github.workspace }}
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ secrets.AZURE_BACKEND_APP_NAME }}
-          publish-profile: ${{ secrets.AZURE_BACKEND_PUBLISH_PROFILE }}
           package: back-end/
+
+      - name: Azure Logout
+        if: always()
+        uses: azure/cli@v2
+        with:
+          inlineScript: az logout

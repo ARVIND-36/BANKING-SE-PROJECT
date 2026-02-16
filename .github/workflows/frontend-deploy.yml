@@ -14,20 +14,18 @@ on:
     branches: [main]
     paths:
       - "front-end/**"
-  workflow_dispatch: # Allow manual trigger from GitHub UI
-
-defaults:
-  run:
-    working-directory: front-end
+  workflow_dispatch:
 
 jobs:
   # ─── LINT & BUILD ──────────────────────────────────────────
   build:
     name: Lint & Build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: front-end
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -95,5 +93,7 @@ jobs:
               --auth-mode login
 
       - name: Azure Logout
-        run: az logout
         if: always()
+        uses: azure/cli@v2
+        with:
+          inlineScript: az logout
