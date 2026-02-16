@@ -3,6 +3,7 @@ import db from "../config/db.js";
 import { orders } from "../models/schema.js";
 import logger from "../utils/logger.js";
 import crypto from "crypto";
+import { triggerWebhook } from "../services/webhookService.js";
 
 // ─── CREATE ORDER ───────────────────────────────────────────
 export const createOrder = async (req, res) => {
@@ -110,7 +111,7 @@ export const processPayment = async (req, res) => {
 
             // 3. Check Balance
             const amount = parseFloat(order[0].amount);
-            if (parseFloat(buyer[0].balance) < amount) {
+            if (parseFloat(buyer[0].walletBalance) < amount) {
                 throw new Error("Insufficient balance");
             }
 
@@ -121,7 +122,7 @@ export const processPayment = async (req, res) => {
             // 5. Debit Buyer
             await tx
                 .update(users)
-                .set({ balance: sql`${users.balance} - ${amount}` })
+                .set({ walletBalance: sql`${users.walletBalance} - ${amount}` })
                 .where(eq(users.id, userId));
 
             // 6. Credit Merchant (PENDING BALANCE)

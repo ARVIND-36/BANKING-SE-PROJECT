@@ -61,7 +61,7 @@ const HostedCheckout = () => {
 
             if (order.returnUrl) {
                 setTimeout(() => {
-                    window.location.href = `${order.returnUrl}?payment_id=${res.data.data.paymentId}&status=success`;
+                    window.location.href = `${order.returnUrl}?payment_id=${res.data.data.paymentId}&orderId=${orderId}&status=success`;
                 }, 1500);
             } else {
                 setTimeout(() => navigate("/transactions"), 1500);
