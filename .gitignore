@@ -5,6 +5,7 @@ back-end/.env.local
 back-end/.env.production.local
 back-end/logs/
 back-end/dist/
+back-end/Logs
 
 # Frontend
 front-end/node_modules/
