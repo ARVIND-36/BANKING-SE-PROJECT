@@ -45,10 +45,11 @@ const restrictedCors = cors({
 // Open CORS – any third-party / developer app can call the payment gateway API
 const openCors = cors();
 
-// Apply restricted CORS by default for all routes
-app.use(restrictedCors);
-// Override with open CORS for the public developer gateway API (/api/v1)
+// IMPORTANT: Register open CORS for /api/v1 BEFORE the restricted global CORS
+// Express processes middleware in order, so this must come first
 app.use("/api/v1", openCors);
+// Apply restricted CORS for all other routes
+app.use(restrictedCors);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
