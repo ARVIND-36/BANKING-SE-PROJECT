@@ -1,0 +1,77 @@
+# ──────────────────────────────────────────────────────────────
+# NIDHI Backend – CI/CD Pipeline
+# Deploys Node.js backend to Azure App Service
+# ──────────────────────────────────────────────────────────────
+name: Backend CI/CD
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "back-end/**"
+      - ".github/workflows/backend-deploy.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "back-end/**"
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+defaults:
+  run:
+    working-directory: back-end
+
+jobs:
+  # ─── TEST & LINT ────────────────────────────────────────────
+  test:
+    name: Test & Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: back-end/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test --if-present
+        env:
+          NODE_ENV: test
+
+  # ─── BUILD & DEPLOY ────────────────────────────────────────
+  deploy:
+    name: Deploy to Azure
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: back-end/package-lock.json
+
+      - name: Install production dependencies
+        run: npm ci --omit=dev
+
+      - name: Remove unnecessary files
+        run: |
+          rm -rf .env .env.* test/ logs/ *.log
+
+      - name: Deploy to Azure App Service
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ secrets.AZURE_BACKEND_APP_NAME }}
+          publish-profile: ${{ secrets.AZURE_BACKEND_PUBLISH_PROFILE }}
+          package: back-end

@@ -1,0 +1,110 @@
+# ──────────────────────────────────────────────────────────────
+# NIDHI Frontend – CI/CD Pipeline
+# Builds React app and deploys to Azure Storage static website
+# ──────────────────────────────────────────────────────────────
+name: Frontend CI/CD
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "front-end/**"
+      - ".github/workflows/frontend-deploy.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "front-end/**"
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+defaults:
+  run:
+    working-directory: front-end
+
+jobs:
+  # ─── LINT & BUILD ──────────────────────────────────────────
+  build:
+    name: Lint & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: front-end/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Build for production
+        run: npm run build
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist
+          path: front-end/dist
+          retention-days: 1
+
+  # ─── DEPLOY TO AZURE STORAGE ────────────────────────────────
+  deploy:
+    name: Deploy to Azure Storage
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-dist
+          path: dist
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Clear old files from $web container
+        uses: azure/cli@v2
+        with:
+          inlineScript: |
+            az storage blob delete-batch \
+              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} \
+              --source '$web' \
+              --auth-mode login
+
+      - name: Upload new build to $web container
+        uses: azure/cli@v2
+        with:
+          inlineScript: |
+            az storage blob upload-batch \
+              --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }} \
+              --destination '$web' \
+              --source dist \
+              --overwrite \
+              --auth-mode login
+
+      - name: Purge CDN (if configured)
+        if: secrets.AZURE_CDN_PROFILE_NAME != ''
+        uses: azure/cli@v2
+        with:
+          inlineScript: |
+            az cdn endpoint purge \
+              --content-paths "/*" \
+              --profile-name ${{ secrets.AZURE_CDN_PROFILE_NAME }} \
+              --name ${{ secrets.AZURE_CDN_ENDPOINT_NAME }} \
+              --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }}
+        continue-on-error: true
+
+      - name: Azure Logout
+        run: az logout
+        if: always()
