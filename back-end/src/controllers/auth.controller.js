@@ -351,6 +351,8 @@ export const login = async (req, res) => {
           isVerified: user.isVerified,
           hasSetPin: user.hasSetPin || false,
           lastPinChange: user.lastPinChange || null,
+          walletBalance: user.walletBalance || "0.00",
+          upiId: user.upiId || null,
         },
         token,
       },
@@ -377,6 +379,8 @@ export const getProfile = async (req, res) => {
         isVerified: users.isVerified,
         hasSetPin: users.hasSetPin,
         lastPinChange: users.lastPinChange,
+        walletBalance: users.walletBalance,
+        upiId: users.upiId,
         createdAt: users.createdAt,
       })
       .from(users)

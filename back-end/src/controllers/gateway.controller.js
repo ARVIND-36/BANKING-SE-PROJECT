@@ -86,6 +86,10 @@ import { payments, merchants, users, transactions } from "../models/schema.js";
 import { sql } from "drizzle-orm";
 
 // ─── PROCESS PAYMENT (Wallet Debit) ─────────────────────────
+// NOTE: neon-http driver does not support db.transaction().
+// We use sequential queries instead. This is acceptable for a
+// demo/project because the Neon serverless HTTP driver executes
+// each query as its own implicit transaction.
 export const processPayment = async (req, res) => {
     try {
         const userId = req.user.id; // Buyer (Logged in user)
@@ -95,93 +99,95 @@ export const processPayment = async (req, res) => {
             return res.status(400).json({ success: false, message: "Order ID is required" });
         }
 
-        // Start Atomic Transaction
-        const result = await db.transaction(async (tx) => {
-            // 1. Fetch Order & Merchant
-            const order = await tx.select().from(orders).where(eq(orders.orderId, orderId));
-            if (order.length === 0) throw new Error("Order not found");
-            if (order[0].status === 'paid') throw new Error("Order already paid");
+        // 1. Fetch Order
+        const order = await db.select().from(orders).where(eq(orders.orderId, orderId));
+        if (order.length === 0) {
+            return res.status(400).json({ success: false, message: "Order not found" });
+        }
+        if (order[0].status === 'paid') {
+            return res.status(400).json({ success: false, message: "Order already paid" });
+        }
 
-            const merchant = await tx.select().from(merchants).where(eq(merchants.id, order[0].merchantId));
-            if (merchant.length === 0) throw new Error("Merchant not found");
+        // 2. Fetch Merchant
+        const merchant = await db.select().from(merchants).where(eq(merchants.id, order[0].merchantId));
+        if (merchant.length === 0) {
+            return res.status(400).json({ success: false, message: "Merchant not found" });
+        }
 
-            // 2. Fetch Buyer
-            const buyer = await tx.select().from(users).where(eq(users.id, userId));
-            if (buyer.length === 0) throw new Error("User not found");
+        // 3. Fetch Buyer
+        const buyer = await db.select().from(users).where(eq(users.id, userId));
+        if (buyer.length === 0) {
+            return res.status(400).json({ success: false, message: "User not found" });
+        }
 
-            // 3. Check Balance
-            const amount = parseFloat(order[0].amount);
-            if (parseFloat(buyer[0].walletBalance) < amount) {
-                throw new Error("Insufficient balance");
-            }
+        // 4. Check Balance
+        const amount = parseFloat(order[0].amount);
+        const buyerBalance = parseFloat(buyer[0].walletBalance || 0);
+        if (buyerBalance < amount) {
+            return res.status(400).json({ success: false, message: "Insufficient balance" });
+        }
 
-            // 4. Generate IDs
-            const transactionId = `txn_${crypto.randomBytes(12).toString("hex")}`;
-            const paymentId = `pay_${crypto.randomBytes(12).toString("hex")}`;
+        // 5. Generate IDs
+        const transactionId = `txn_${crypto.randomBytes(12).toString("hex")}`;
+        const paymentId = `pay_${crypto.randomBytes(12).toString("hex")}`;
 
-            // 5. Debit Buyer
-            await tx
-                .update(users)
-                .set({ walletBalance: sql`${users.walletBalance} - ${amount}` })
-                .where(eq(users.id, userId));
+        // 6. Debit Buyer
+        await db
+            .update(users)
+            .set({ walletBalance: sql`${users.walletBalance} - ${amount}` })
+            .where(eq(users.id, userId));
 
-            // 6. Credit Merchant (PENDING BALANCE)
-            // Money goes to pendingBalance, NOT availableBalance.
-            // It will move to availableBalance after Settlement (T+1).
-            await tx
-                .update(merchants)
-                .set({ pendingBalance: sql`${merchants.pendingBalance} + ${amount}` })
-                .where(eq(merchants.id, merchant[0].id));
+        // 7. Credit Merchant (PENDING BALANCE)
+        await db
+            .update(merchants)
+            .set({ pendingBalance: sql`${merchants.pendingBalance} + ${amount}` })
+            .where(eq(merchants.id, merchant[0].id));
 
-            // 7. Record Transaction (Internal Ledger)
-            await tx.insert(transactions).values({
-                transactionId,
-                senderId: userId,
-                receiverId: merchant[0].userId, // Linked user account of merchant
-                amount,
-                type: "payment",
-                status: "success",
-                description: `Payment for Order ${orderId}`,
-            });
-
-            // 8. Record Payment (Gateway Ledger)
-            await tx.insert(payments).values({
-                orderId,
-                merchantId: merchant[0].id,
-                paymentId,
-                amount,
-                status: "success",
-                method: "wallet",
-                transactionId,
-            });
-
-            // 9. Update Order Status
-            await tx
-                .update(orders)
-                .set({ status: "paid" })
-                .where(eq(orders.orderId, orderId));
-
-            return { paymentId, transactionId, merchant, order };
+        // 8. Record Transaction (Internal Ledger)
+        await db.insert(transactions).values({
+            transactionId,
+            senderId: userId,
+            receiverId: merchant[0].userId,
+            amount,
+            type: "payment",
+            status: "completed",
+            description: `Payment for Order ${orderId}`,
         });
 
-        logger.info(`Payment successful: ${result.paymentId} for Order ${orderId}`);
+        // 9. Record Payment (Gateway Ledger)
+        await db.insert(payments).values({
+            orderId,
+            merchantId: merchant[0].id,
+            paymentId,
+            amount,
+            status: "success",
+            method: "wallet",
+            transactionId,
+        });
 
-        // Off-load webhook triggering so it doesn't block the response significantly,
-        // or just await it if we want strong consistency guarantees for the demo
-        triggerWebhook(result.merchant[0].id, "payment.success", {
+        // 10. Update Order Status
+        await db
+            .update(orders)
+            .set({ status: "paid" })
+            .where(eq(orders.orderId, orderId));
+
+        logger.info(`Payment successful: ${paymentId} for Order ${orderId}`);
+
+        // Fire webhook asynchronously
+        triggerWebhook(merchant[0].id, "payment.success", {
             event: "payment.success",
-            payment_id: result.paymentId,
+            payment_id: paymentId,
             order_id: orderId,
-            amount: result.order[0].amount,
-            currency: result.order[0].currency,
+            amount: order[0].amount,
+            currency: order[0].currency,
             status: "success",
             timestamp: new Date().toISOString()
-        }).catch(err => logger.error("Webhook triggers failed:", err));
+        }).catch(err => logger.error("Webhook trigger failed:", err));
 
         return res.status(200).json({
             success: true,
             data: {
-                paymentId: result.paymentId,
+                paymentId,
                 status: "success",
                 message: "Payment processed successfully"
             }
@@ -189,6 +195,6 @@ export const processPayment = async (req, res) => {
 
     } catch (error) {
         logger.error(`Payment execution error: ${error.message}`);
-        return res.status(400).json({ success: false, message: error.message });
+        return res.status(500).json({ success: false, message: "Payment processing failed. Please try again." });
     }
 };

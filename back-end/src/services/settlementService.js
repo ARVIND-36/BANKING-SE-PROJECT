@@ -9,52 +9,51 @@ import crypto from "crypto";
 // In a real system, this would filter by transaction date (T+1)
 export const runSettlement = async () => {
     try {
-        const results = await db.transaction(async (tx) => {
-            // 1. Get all merchants with positive pending balance
-            const eligibleMerchants = await tx
-                .select()
-                .from(merchants)
-                .where(sql`${merchants.pendingBalance} > 0`);
+        // NOTE: neon-http driver does not support db.transaction().
+        // Using sequential queries instead.
 
-            const settlementReports = [];
+        // 1. Get all merchants with positive pending balance
+        const eligibleMerchants = await db
+            .select()
+            .from(merchants)
+            .where(sql`${merchants.pendingBalance} > 0`);
 
-            for (const merchant of eligibleMerchants) {
-                const amountToSettle = merchant.pendingBalance;
+        const settlementReports = [];
 
-                if (parseFloat(amountToSettle) <= 0) continue;
+        for (const merchant of eligibleMerchants) {
+            const amountToSettle = merchant.pendingBalance;
 
-                const settlementId = `setl_${crypto.randomBytes(12).toString("hex")}`;
+            if (parseFloat(amountToSettle) <= 0) continue;
 
-                // 2. Move funds: Pending -> Available
-                await tx
-                    .update(merchants)
-                    .set({
-                        pendingBalance: "0.00",
-                        availableBalance: sql`${merchants.availableBalance} + ${amountToSettle}`
-                    })
-                    .where(eq(merchants.id, merchant.id));
+            const settlementId = `setl_${crypto.randomBytes(12).toString("hex")}`;
 
-                // 3. Create Settlement Record
-                await tx.insert(settlements).values({
-                    merchantId: merchant.id,
-                    settlementId,
-                    amount: amountToSettle,
-                    status: "processed",
-                    periodEnd: new Date(),
-                });
+            // 2. Move funds: Pending -> Available
+            await db
+                .update(merchants)
+                .set({
+                    pendingBalance: "0.00",
+                    availableBalance: sql`${merchants.availableBalance} + ${amountToSettle}`
+                })
+                .where(eq(merchants.id, merchant.id));
 
-                settlementReports.push({
-                    merchantId: merchant.id,
-                    amount: amountToSettle,
-                    settlementId
-                });
-            }
+            // 3. Create Settlement Record
+            await db.insert(settlements).values({
+                merchantId: merchant.id,
+                settlementId,
+                amount: amountToSettle,
+                status: "processed",
+                periodEnd: new Date(),
+            });
 
-            return settlementReports;
-        });
+            settlementReports.push({
+                merchantId: merchant.id,
+                amount: amountToSettle,
+                settlementId
+            });
+        }
 
-        logger.info(`Settlement run completed. Settled for ${results.length} merchants.`);
-        return results;
+        logger.info(`Settlement run completed. Settled for ${settlementReports.length} merchants.`);
+        return settlementReports;
 
     } catch (error) {
         logger.error(`Settlement run failed: ${error.message}`);
