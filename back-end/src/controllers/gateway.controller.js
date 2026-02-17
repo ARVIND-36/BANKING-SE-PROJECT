@@ -3,7 +3,7 @@ import db from "../config/db.js";
 import { orders } from "../models/schema.js";
 import logger from "../utils/logger.js";
 import crypto from "crypto";
-import { triggerWebhook } from "../services/webhookService.js";
+
 
 // ─── CREATE ORDER ───────────────────────────────────────────
 export const createOrder = async (req, res) => {
@@ -172,17 +172,6 @@ export const processPayment = async (req, res) => {
             .where(eq(orders.orderId, orderId));
 
         logger.info(`Payment successful: ${paymentId} for Order ${orderId}`);
-
-        // Fire webhook asynchronously
-        triggerWebhook(merchant[0].id, "payment.success", {
-            event: "payment.success",
-            payment_id: paymentId,
-            order_id: orderId,
-            amount: order[0].amount,
-            currency: order[0].currency,
-            status: "success",
-            timestamp: new Date().toISOString()
-        }).catch(err => logger.error("Webhook trigger failed:", err));
 
         return res.status(200).json({
             success: true,

@@ -204,32 +204,7 @@ export const payments = pgTable("payments", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-// ─── WEBHOOKS ───────────────────────────────────────────────
-export const webhookEndpoints = pgTable("webhook_endpoints", {
-  id: serial("id").primaryKey(),
-  merchantId: integer("merchant_id").notNull().references(() => merchants.id),
-  url: text("url").notNull(),
-  secret: varchar("secret", { length: 100 }).notNull(), // Shared secret for HMAC
-  events: jsonb("events").default(["payment.success", "payment.failed"]), // Array of subscribed events
-  isActive: boolean("is_active").default(true),
-  createdAt: timestamp("created_at").defaultNow(),
-});
 
-export const webhookEvents = pgTable("webhook_events", {
-  id: serial("id").primaryKey(),
-  merchantId: integer("merchant_id").notNull().references(() => merchants.id),
-  eventId: varchar("event_id", { length: 50 }).notNull().unique(), // evt_...
-  type: varchar("type", { length: 50 }).notNull(), // payment.success
-  payload: jsonb("payload").notNull(),
-
-  status: varchar("status", { length: 20 }).default("pending"), // pending, success, failed, retrying
-  attempts: integer("attempts").default(0),
-  lastAttemptAt: timestamp("last_attempt_at"),
-  responseStatus: integer("response_status"),
-  responseBody: text("response_body"),
-
-  createdAt: timestamp("created_at").defaultNow(),
-});
 
 // ─── SETTLEMENTS ────────────────────────────────────────────
 export const settlements = pgTable("settlements", {
