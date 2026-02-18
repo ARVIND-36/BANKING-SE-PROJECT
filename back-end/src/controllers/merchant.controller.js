@@ -174,44 +174,55 @@ export const getMerchantProfile = async (req, res) => {
     try {
         const userId = req.user.id;
 
-        const result = await db
-            .select({
-                id: merchants.id,
-                businessName: merchants.businessName,
-                businessType: merchants.businessType,
-                businessCategory: merchants.businessCategory,
-                businessDescription: merchants.businessDescription,
-                businessWebsite: merchants.businessWebsite,
-                gstNumber: merchants.gstNumber,
-                businessPan: merchants.businessPan,
-                registrationNumber: merchants.registrationNumber,
-                addressStreet: merchants.addressStreet,
-                addressCity: merchants.addressCity,
-                addressState: merchants.addressState,
-                addressPinCode: merchants.addressPinCode,
-                bankAccountName: merchants.bankAccountName,
-                bankName: merchants.bankName,
-                accountNumber: merchants.accountNumber,
-                ifscCode: merchants.ifscCode,
-                accountType: merchants.accountType,
-                businessEmail: merchants.businessEmail,
-                businessPhone: merchants.businessPhone,
-                supportEmail: merchants.supportEmail,
-                supportPhone: merchants.supportPhone,
-                availableBalance: merchants.availableBalance,
-                pendingBalance: merchants.pendingBalance,
-                status: merchants.status,
-                kybStatus: merchants.kybStatus,
-                kybVerifiedAt: merchants.kybVerifiedAt,
-                createdAt: merchants.createdAt,
-                user: {
-                    name: users.name,
-                    email: users.email,
-                }
-            })
-            .from(merchants)
-            .innerJoin(users, eq(merchants.userId, users.id))
-            .where(eq(merchants.userId, userId));
+        let result;
+        // Retry once on transient Neon connection failures
+        for (let attempt = 1; attempt <= 2; attempt++) {
+            try {
+                result = await db
+                    .select({
+                        id: merchants.id,
+                        businessName: merchants.businessName,
+                        businessType: merchants.businessType,
+                        businessCategory: merchants.businessCategory,
+                        businessDescription: merchants.businessDescription,
+                        businessWebsite: merchants.businessWebsite,
+                        gstNumber: merchants.gstNumber,
+                        businessPan: merchants.businessPan,
+                        registrationNumber: merchants.registrationNumber,
+                        addressStreet: merchants.addressStreet,
+                        addressCity: merchants.addressCity,
+                        addressState: merchants.addressState,
+                        addressPinCode: merchants.addressPinCode,
+                        bankAccountName: merchants.bankAccountName,
+                        bankName: merchants.bankName,
+                        accountNumber: merchants.accountNumber,
+                        ifscCode: merchants.ifscCode,
+                        accountType: merchants.accountType,
+                        businessEmail: merchants.businessEmail,
+                        businessPhone: merchants.businessPhone,
+                        supportEmail: merchants.supportEmail,
+                        supportPhone: merchants.supportPhone,
+                        availableBalance: merchants.availableBalance,
+                        pendingBalance: merchants.pendingBalance,
+                        status: merchants.status,
+                        kybStatus: merchants.kybStatus,
+                        kybVerifiedAt: merchants.kybVerifiedAt,
+                        createdAt: merchants.createdAt,
+                        user: {
+                            name: users.name,
+                            email: users.email,
+                        }
+                    })
+                    .from(merchants)
+                    .innerJoin(users, eq(merchants.userId, users.id))
+                    .where(eq(merchants.userId, userId));
+                break; // success — exit retry loop
+            } catch (queryErr) {
+                if (attempt === 2) throw queryErr; // re-throw on second failure
+                logger.warn(`getMerchantProfile: transient DB error (attempt ${attempt}), retrying...`);
+                await new Promise((r) => setTimeout(r, 300));
+            }
+        }
 
         if (result.length === 0) {
             return res.status(200).json({ success: true, data: null });

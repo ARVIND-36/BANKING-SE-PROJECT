@@ -53,7 +53,7 @@ const AppLayout = () => {
         <Outlet />
       </main>
 
-      {/* Bottom Navigation – 2 tabs */}
+      {/* Bottom Navigation – 3 tabs */}
       {!hideBottomNav && (
         <nav className="bottom-nav">
           <NavLink to="/home" className={({ isActive }) => `bottom-nav-item ${isActive ? "active" : ""}`}>
@@ -62,6 +62,15 @@ const AppLayout = () => {
               <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
             </svg>
             <span>Pay</span>
+          </NavLink>
+          <NavLink to="/merchant" className={({ isActive }) => `bottom-nav-item ${isActive ? "active" : ""}`}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+              <path d="M16 3h-8l-2 4h12z" />
+              <line x1="12" y1="11" x2="12" y2="17" />
+              <line x1="9" y1="14" x2="15" y2="14" />
+            </svg>
+            <span>Gateway</span>
           </NavLink>
           <NavLink to="/loans" className={({ isActive }) => `bottom-nav-item ${isActive ? "active" : ""}`}>
             <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
